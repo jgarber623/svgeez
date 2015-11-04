@@ -1,8 +1,8 @@
 module Svgeez
   class SpriteBuilder
     def initialize(options)
-      @source = File.expand_path(options['source'] || './')
-      @destination = File.expand_path(options['destination'] || './_svgeez')
+      @source = File.expand_path(options.fetch('source', './'))
+      @destination = File.expand_path(options.fetch('destination', './_svgeez'))
       @with_svgo = options['svgo']
     end
 
@@ -33,24 +33,20 @@ module Svgeez
       end
     end
 
-    private
-
     def build_output_file_contents
-      output_file_contents = '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">'
+      '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">'.tap do |output_file_contents|
+        # Loop over all input files, grabbing their content, and appending to `output_file_contents`
+        input_file_paths.each do |file_path|
+          file_contents = use_svgo? ? `svgo -i #{file_path} -o -` : IO.read(file_path)
+          pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>$/m
 
-      # Loop over all input files, grabbing their content, and appending to `output_file_contents`
-      input_file_paths.each do |file_path|
-        file_contents = @use_svgo ? `svgo -i #{file_path} -o -` : IO.read(file_path)
-        pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>$/m
-
-        file_contents.match(pattern) do |matches|
-          output_file_contents << %{<symbol fill="currentcolor" id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+          file_contents.match(pattern) do |matches|
+            output_file_contents << %{<symbol fill="currentcolor" id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+          end
         end
+
+        output_file_contents << '</svg>'
       end
-
-      output_file_contents << '</svg>'
-
-      output_file_contents
     end
 
     def input_file_paths

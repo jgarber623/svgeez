@@ -158,6 +158,8 @@ svgeez benefited greatly from the hard work done by the folks working on the fol
 
 Additionally, Chris Coyier's [CSS Tricks](https://css-tricks.com/) posts linked above got me interested in SVG sprites.
 
+Lastly, the sample icons in `spec/fixtures/icons` are from [@jxnblk](https://github.com/jxnblk)'s [Geomicons Open](https://github.com/jxnblk/geomicons-open) icon set.
+
 svgeez is written and maintained by [@jgarber623](https://github.com/jgarber623).
 
 ## License
