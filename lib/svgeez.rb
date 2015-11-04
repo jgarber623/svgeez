@@ -7,6 +7,7 @@ require 'svgeez/version'
 require 'svgeez/command'
 require 'svgeez/commands/build'
 require 'svgeez/commands/watch'
+require 'svgeez/sprite_builder'
 
 module Svgeez
   class << self
