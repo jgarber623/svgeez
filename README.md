@@ -2,6 +2,8 @@
 
 **A Ruby gem for automatically generating an SVG sprite from a folder of SVG icons.**
 
+[![Build Status](https://travis-ci.org/jgarber623/svgeez.svg?branch=master)](https://travis-ci.org/jgarber623/svgeez)
+
 If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Simply run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a directory; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
 _For more on why SVG sprites are the bee's knees as far as icon systems go, give Chris Coyier's original post, [Icon System with SVG Sprites](https://css-tricks.com/svg-sprites-use-better-icon-fonts/), and his follow-up article, [SVG \`symbol\` a Good Choice for Icons](https://css-tricks.com/svg-symbol-good-choice-icons/) a read-through._
@@ -9,8 +11,8 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 ## Key Features
 
 - Provides a simple [CLI](https://en.wikipedia.org/wiki/Command-line_interface) for generating SVG sprite files.
-- Optionally optimizes SVG files with [SVGO](https://github.com/svg/svgo/).
 - Easily integrates with existing projects (e.g. alongside a Rails application using [Foreman](https://github.com/ddollar/foreman)).
+- Optionally optimizes SVG files with [SVGO](https://github.com/svg/svgo/).
 
 ## Getting Started
 
