@@ -7,7 +7,7 @@ require 'mercenary'
 
 Mercenary.program(:svgeez) do |p|
   p.version Svgeez::VERSION
-  p.description 'Generate an SVG sprite from a folder of SVGs.'
+  p.description 'Generate an SVG sprite from a folder of SVG icons.'
   p.syntax 'svgeez <subcommand> [options]'
 
   Svgeez::Command.subclasses.each { |c| c.init_with_program(p) }

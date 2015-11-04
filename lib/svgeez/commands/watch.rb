@@ -4,7 +4,7 @@ module Svgeez
       class << self
         def init_with_program(p)
           p.command(:watch) do |c|
-            c.description 'Watches a folder of SVGs for changes'
+            c.description 'Watches a folder of SVG icons for changes'
             c.syntax 'watch [options]'
 
             add_build_options(c)
