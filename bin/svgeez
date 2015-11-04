@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__), *%w{ .. lib })
+
+require 'svgeez'
+require 'mercenary'
+
+Mercenary.program(:svgeez) do |p|
+  p.version Svgeez::VERSION
+  p.description 'Generate an SVG sprite from a folder of SVGs.'
+  p.syntax 'svgeez <subcommand> [options]'
+
+  Svgeez::Command.subclasses.each { |c| c.init_with_program(p) }
+
+  p.action do |args, options|
+    if args.empty?
+      puts p
+      abort
+    end
+  end
+end
