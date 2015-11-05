@@ -86,7 +86,7 @@ Within generated SVG sprite files, each icon is wrapped in a `<symbol>` element 
 For example, a file named `menu.svg` in `~/Sites/sixtwothree.org/images/icons` will be assigned an `id` value of `icons-menu`.
 
 ```svg
-<symbol  fill="currentcolor" id="icons-menu" viewBox="0 0 32 32">
+<symbol id="icons-menu" viewBox="0 0 32 32">
     <path d="…"/>
 </symbol>
 ```
@@ -136,7 +136,7 @@ For smaller icon sets, this may be an acceptable balance of user and developer n
 
 ### Styling embedded icons
 
-Icons embedded with the inline `<use>` technique will inherit their fill color from the nearest parent's `color` value (thanks to each `<symbol>`'s `fill="currentcolor"` attribute), but this can be overriden with CSS:
+Icons embedded with the inline `<use>` technique will inherit their fill color from the nearest parent's `color` value, but this can be overriden with CSS:
 
 ```css
 button {

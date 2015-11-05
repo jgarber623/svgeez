@@ -41,7 +41,7 @@ module Svgeez
           pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>$/m
 
           file_contents.match(pattern) do |matches|
-            output_file_contents << %{<symbol fill="currentcolor" id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+            output_file_contents << %{<symbol id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
           end
         end
 
