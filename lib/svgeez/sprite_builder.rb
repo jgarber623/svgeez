@@ -38,7 +38,7 @@ module Svgeez
         # Loop over all input files, grabbing their content, and appending to `output_file_contents`
         input_file_paths.each do |file_path|
           file_contents = use_svgo? ? `svgo -i #{file_path} -o -` : IO.read(file_path)
-          pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>$/m
+          pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m
 
           file_contents.match(pattern) do |matches|
             output_file_contents << %{<symbol id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
