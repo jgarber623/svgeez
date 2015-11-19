@@ -34,7 +34,7 @@ module Svgeez
     end
 
     def build_output_file_contents
-      '<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">'.tap do |output_file_contents|
+      '<svg style="display: none;" version="1.1">'.tap do |output_file_contents|
         # Loop over all input files, grabbing their content, and appending to `output_file_contents`
         input_file_paths.each do |file_path|
           file_contents = use_svgo? ? `svgo -i #{file_path} -o -` : IO.read(file_path)
