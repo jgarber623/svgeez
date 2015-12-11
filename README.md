@@ -60,6 +60,7 @@ The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/
 
 #### Options and Defaults
 
+|Option|Description|
 |---|---|
 |`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./`).|
 |`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./_svgeez/svgeez.svg`)|
