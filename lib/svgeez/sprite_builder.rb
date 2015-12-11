@@ -8,8 +8,8 @@ module Svgeez
 
     def build
       unless source_is_destination?
-        if input_file_paths.any?
-          Svgeez.logger.info %{Generating sprite at `#{output_file_path}` from #{input_file_paths.length} SVG#{'s' if input_file_paths.length > 1}...}
+        if source_file_paths.any?
+          Svgeez.logger.info %{Generating sprite at `#{destination_file_path}` from #{source_file_paths.length} SVG#{'s' if source_file_paths.length > 1}...}
 
           # Make destination directory
           FileUtils.mkdir_p(@destination)
@@ -20,11 +20,11 @@ module Svgeez
           end
 
           # Write the file
-          File.open(output_file_path, 'w') do |f|
-            f.write build_output_file_contents
+          File.open(destination_file_path, 'w') do |f|
+            f.write build_destination_file_contents
           end
 
-          Svgeez.logger.info %{Successfully generated sprite at `#{output_file_path}`.}
+          Svgeez.logger.info %{Successfully generated sprite at `#{destination_file_path}`.}
         else
           Svgeez.logger.warn %{No SVGs were found in `#{@source}`.}
         end
@@ -33,32 +33,32 @@ module Svgeez
       end
     end
 
-    def build_output_file_contents
-      %{<svg id="#{source_basename}" style="display: none;" version="1.1">}.tap do |output_file_contents|
-        # Loop over all input files, grabbing their content, and appending to `output_file_contents`
-        input_file_paths.each do |file_path|
+    def build_destination_file_contents
+      %{<svg id="#{source_basename}" style="display: none;" version="1.1">}.tap do |destination_file_contents|
+        # Loop over all source files, grabbing their content, and appending to `destination_file_contents`
+        source_file_paths.each do |file_path|
           file_contents = use_svgo? ? `svgo -i #{file_path} -o -` : IO.read(file_path)
           pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m
 
           file_contents.match(pattern) do |matches|
-            output_file_contents << %{<symbol id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+            destination_file_contents << %{<symbol id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
           end
         end
 
-        output_file_contents << '</svg>'
+        destination_file_contents << '</svg>'
       end
     end
 
-    def input_file_paths
-      Dir.glob(File.join(@source, '*.svg'))
-    end
-
-    def output_file_path
+    def destination_file_path
       File.join(@destination, %{#{source_basename}.svg})
     end
 
     def source_basename
       @source_basename ||= File.basename(@source)
+    end
+
+    def source_file_paths
+      Dir.glob(File.join(@source, '*.svg'))
     end
 
     def source_is_destination?

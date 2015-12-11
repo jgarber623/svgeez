@@ -47,7 +47,7 @@ svgeez is a command line program with several useful subcommands. From the root 
 
 ### The `build` command
 
-You can manually generate an SVG sprite from a folder of SVGs with the `build` command which takes two options, a path to your folder of individual SVGs and a path to the desired output folder. _These paths must be different!_
+You can manually generate an SVG sprite from a folder of SVGs with the `build` command which takes two options, a path to your folder of individual SVGs and a path to the desired destination folder. _These paths must be different!_
 
 A basic example:
 
