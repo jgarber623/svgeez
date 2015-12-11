@@ -29,6 +29,7 @@ Contributing to svgeez is pretty straightforward:
 1. Install development dependencies by running `bundle install` from the root of the project.
 1. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
 1. _Write some code!_
+1. Build (`rake build`) and install (`rake install`) your updated code.
 1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `rake`.
 1. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
 1. Push the branch to your fork of svgeez: `git push origin your-descriptive-branch-name`.
