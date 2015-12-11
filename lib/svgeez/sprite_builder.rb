@@ -34,19 +34,23 @@ module Svgeez
     end
 
     def build_destination_file_contents
-      %{<svg id="#{source_basename}" style="display: none;" version="1.1">}.tap do |destination_file_contents|
+      %{<svg id="#{destination_file_id}" style="display: none;" version="1.1">}.tap do |destination_file_contents|
         # Loop over all source files, grabbing their content, and appending to `destination_file_contents`
         source_file_paths.each do |file_path|
           file_contents = use_svgo? ? `svgo -i #{file_path} -o -` : IO.read(file_path)
           pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m
 
           file_contents.match(pattern) do |matches|
-            destination_file_contents << %{<symbol id="#{source_basename}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+            destination_file_contents << %{<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
           end
         end
 
         destination_file_contents << '</svg>'
       end
+    end
+
+    def destination_file_id
+      @destination_file_id ||= source_basename.gsub(' ', '-')
     end
 
     def destination_file_path
