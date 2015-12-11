@@ -4,6 +4,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/svgeez.svg)](https://badge.fury.io/rb/svgeez)
 [![Build Status](https://travis-ci.org/jgarber623/svgeez.svg?branch=master)](https://travis-ci.org/jgarber623/svgeez)
+[![Code Climate](https://codeclimate.com/github/jgarber623/svgeez/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/svgeez)
 
 If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Simply run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
@@ -52,10 +53,17 @@ You can manually generate an SVG sprite from a folder of SVGs with the `build` c
 A basic example:
 
 ```sh
-$ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images
+$ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
 ```
 
-The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/icons` into a single SVG sprite in `~/Sites/sixtwothree.org/images`. The resulting sprite file will be named `icons.svg` (this file name is derived from the name of the provided source folder).
+The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/icons` into a single SVG sprite file (`icons.svg`) in `~/Sites/sixtwothree.org/images`.
+
+#### Options and Defaults
+
+|---|---|
+|`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./`).|
+|`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./_svgeez/svgeez.svg`)|
+|`--with-svgo`|Optimize source SVGs with [SVGO](https://github.com/svg/svgo/) before sprite generation (non-destructive)|
 
 ### The `watch` command
 
@@ -64,7 +72,7 @@ The `watch` command takes the same arguments as the `build` command but uses the
 Tweaking the example from above:
 
 ```sh
-$ svgeez watch --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images
+$ svgeez watch --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
 ```
 
 svgeez will remaing running, watching for new, removed, or updated SVG files in the provided source folder. As SVG files are added, deleted, or modified in the source folder, svgeez will keep pumping out updated SVG sprite files to the destination folder.
@@ -74,7 +82,7 @@ svgeez will remaing running, watching for new, removed, or updated SVG files in 
 If you have the excellent [SVGO](https://github.com/svg/svgo/) utility installed on your system (and the `svgo` command is available in your PATH), you can use the `--with-svgo` option and optimize source SVGs before generating the sprite file.
 
 ```sh
-$ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images --with-svgo
+$ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
 ```
 
 Optimizing source SVG files with SVGO is done on-the-fly and the original files are left intact. Depending on the number of individual SVG files in the source folder, using the `--with-svgo` option can add considerable time to SVG sprite generation.
