@@ -50,7 +50,7 @@ module Svgeez
     end
 
     def destination_file_path
-      File.join(@destination, %{#{source_basename}.svg})
+      @destination_file_path ||= File.join(@destination, %{#{source_basename}.svg})
     end
 
     def source_basename
@@ -58,7 +58,7 @@ module Svgeez
     end
 
     def source_file_paths
-      Dir.glob(File.join(@source, '*.svg'))
+      @source_file_paths ||= Dir.glob(File.join(@source, '*.svg'))
     end
 
     def source_is_destination?
