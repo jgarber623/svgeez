@@ -11,8 +11,8 @@ module Svgeez
       end
 
       def add_build_options(c)
-        c.option 'source', '-s', '--source [DIR]', 'Source directory (defaults to ./)'
-        c.option 'destination', '-d', '--destination [DIR]', 'Destination directory (defaults to ./_svgeez)'
+        c.option 'source', '-s', '--source [FOLDER]', 'Source folder (defaults to ./)'
+        c.option 'destination', '-d', '--destination [OUTPUT]', 'Destination file or folder (defaults to ./_svgeez/svgeez.svg)'
         c.option 'svgo', '--with-svgo', 'Optimize source SVGs with SVGO before sprite generation (non-destructive)'
       end
     end

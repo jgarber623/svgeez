@@ -2,7 +2,7 @@ module Svgeez
   class SpriteBuilder
     def initialize(options)
       @source = File.expand_path(options.fetch('source', './'))
-      @destination = File.expand_path(options.fetch('destination', './_svgeez'))
+      @destination = File.expand_path(options.fetch('destination', './_svgeez/svgeez.svg'))
       @with_svgo = options['svgo']
     end
 
@@ -11,8 +11,8 @@ module Svgeez
         if source_file_paths.any?
           Svgeez.logger.info %{Generating sprite at `#{destination_file_path}` from #{source_file_paths.length} SVG#{'s' if source_file_paths.length > 1}...}
 
-          # Make destination directory
-          FileUtils.mkdir_p(@destination)
+          # Make destination folder
+          FileUtils.mkdir_p(destination_folder_path)
 
           # Notify if SVGO requested but not found
           if @with_svgo && !svgo_installed?
@@ -50,15 +50,27 @@ module Svgeez
     end
 
     def destination_file_id
-      @destination_file_id ||= source_basename.gsub(' ', '-')
+      @destination_file_id ||= File.basename(destination_file_name, '.svg').gsub(' ', '-')
+    end
+
+    def destination_file_name
+      if @destination.end_with?('.svg')
+        File.split(@destination)[1]
+      else
+        'svgeez.svg'
+      end
     end
 
     def destination_file_path
-      @destination_file_path ||= File.join(@destination, %{#{source_basename}.svg})
+      @destination_file_path ||= File.join(destination_folder_path, destination_file_name)
     end
 
-    def source_basename
-      @source_basename ||= File.basename(@source)
+    def destination_folder_path
+      if @destination.end_with?('.svg')
+        File.split(@destination)[0]
+      else
+        @destination
+      end
     end
 
     def source_file_paths
@@ -66,7 +78,7 @@ module Svgeez
     end
 
     def source_is_destination?
-      @source == @destination
+      @source == destination_folder_path
     end
 
     def svgo_installed?
