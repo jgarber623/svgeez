@@ -5,6 +5,7 @@
 [![Gem Version](https://badge.fury.io/rb/svgeez.svg)](https://badge.fury.io/rb/svgeez)
 [![Build Status](https://travis-ci.org/jgarber623/svgeez.svg?branch=master)](https://travis-ci.org/jgarber623/svgeez)
 [![Code Climate](https://codeclimate.com/github/jgarber623/svgeez/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/svgeez)
+[![Test Coverage](https://codeclimate.com/github/jgarber623/svgeez/badges/coverage.svg)](https://codeclimate.com/github/jgarber623/svgeez/coverage)
 
 If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Simply run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
