@@ -25,7 +25,7 @@ module Svgeez
 
           listener.start
           sleep
-        rescue Interrupt => e
+        rescue Interrupt
         end
       end
     end
