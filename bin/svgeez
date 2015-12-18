@@ -12,7 +12,7 @@ Mercenary.program(:svgeez) do |p|
 
   Svgeez::Command.subclasses.each { |c| c.init_with_program(p) }
 
-  p.action do |args, options|
+  p.action do |args, _|
     if args.empty?
       puts p
       abort
