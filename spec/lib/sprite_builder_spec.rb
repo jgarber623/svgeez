@@ -28,6 +28,25 @@ describe Svgeez::SpriteBuilder do
     end
   end
 
+  context '#destination_file_name' do
+    # TODO
+    it 'should return a string when @destination quacks like a folder.' do
+      sprite_builder = Svgeez::SpriteBuilder.new({
+        'destination' => './foo'
+      })
+
+      expect(sprite_builder.destination_file_name).to eq('svgeez.svg')
+    end
+
+    it 'should return a string when @destination quacks like a file.' do
+      sprite_builder = Svgeez::SpriteBuilder.new({
+        'destination' => './foo/bar.svg'
+      })
+
+      expect(sprite_builder.destination_file_name).to eq('bar.svg')
+    end
+  end
+
   context '#destination_file_path' do
     it 'should return a path when @destination is not specified.' do
       sprite_builder = Svgeez::SpriteBuilder.new({})
