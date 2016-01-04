@@ -8,7 +8,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './spec/fixtures/icons.svg'
       })
 
-      expect(sprite_builder.build_destination_file_contents).to eq(IO.read('./spec/fixtures/icons.svg'))
+      expect(sprite_builder.build_destination_file_contents).to eq IO.read('./spec/fixtures/icons.svg')
     end
   end
 
@@ -16,7 +16,7 @@ describe Svgeez::SpriteBuilder do
     it 'should return a string when @destination is not specified.' do
       sprite_builder = Svgeez::SpriteBuilder.new({})
 
-      expect(sprite_builder.destination_file_id).to eq('svgeez')
+      expect(sprite_builder.destination_file_id).to eq 'svgeez'
     end
 
     it 'should return a string when @destination is specified.' do
@@ -24,7 +24,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo.svg'
       })
 
-      expect(sprite_builder.destination_file_id).to eq('foo')
+      expect(sprite_builder.destination_file_id).to eq 'foo'
     end
   end
 
@@ -34,7 +34,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo'
       })
 
-      expect(sprite_builder.destination_file_name).to eq('svgeez.svg')
+      expect(sprite_builder.destination_file_name).to eq 'svgeez.svg'
     end
 
     it 'should return a string when @destination quacks like a file.' do
@@ -42,7 +42,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo/bar.svg'
       })
 
-      expect(sprite_builder.destination_file_name).to eq('bar.svg')
+      expect(sprite_builder.destination_file_name).to eq 'bar.svg'
     end
   end
 
@@ -50,7 +50,7 @@ describe Svgeez::SpriteBuilder do
     it 'should return a path when @destination is not specified.' do
       sprite_builder = Svgeez::SpriteBuilder.new({})
 
-      expect(sprite_builder.destination_file_path).to eq(%{#{Dir.pwd}/_svgeez/svgeez.svg})
+      expect(sprite_builder.destination_file_path).to eq %{#{Dir.pwd}/_svgeez/svgeez.svg}
     end
 
     it 'should return a path when @destination quacks like a folder.' do
@@ -58,7 +58,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo'
       })
 
-      expect(sprite_builder.destination_file_path).to eq("#{Dir.pwd}/foo/svgeez.svg")
+      expect(sprite_builder.destination_file_path).to eq "#{Dir.pwd}/foo/svgeez.svg"
     end
 
     it 'should return a path when @destination quacks like a file.' do
@@ -66,7 +66,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo.svg'
       })
 
-      expect(sprite_builder.destination_file_path).to eq("#{Dir.pwd}/foo.svg")
+      expect(sprite_builder.destination_file_path).to eq "#{Dir.pwd}/foo.svg"
     end
   end
 
@@ -74,7 +74,7 @@ describe Svgeez::SpriteBuilder do
     it 'should return a path when @destination is not specified.' do
       sprite_builder = Svgeez::SpriteBuilder.new({})
 
-      expect(sprite_builder.destination_folder_path).to eq(%{#{Dir.pwd}/_svgeez})
+      expect(sprite_builder.destination_folder_path).to eq %{#{Dir.pwd}/_svgeez}
     end
 
     it 'should return a path when @destination quacks like a folder.' do
@@ -82,7 +82,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo'
       })
 
-      expect(sprite_builder.destination_folder_path).to eq(%{#{Dir.pwd}/foo})
+      expect(sprite_builder.destination_folder_path).to eq %{#{Dir.pwd}/foo}
     end
 
     it 'should return a path when @destination quacks like a file.' do
@@ -90,12 +90,12 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo/bar.svg'
       })
 
-      expect(sprite_builder.destination_folder_path).to eq(%{#{Dir.pwd}/foo})
+      expect(sprite_builder.destination_folder_path).to eq %{#{Dir.pwd}/foo}
     end
   end
 
   context '#source_file_paths' do
-    it 'should return an array of file paths.' do
+    it 'should return an array of @source_file_paths.' do
       sprite_builder = Svgeez::SpriteBuilder.new({
         'source' => './spec/fixtures/icons',
       })
@@ -104,7 +104,7 @@ describe Svgeez::SpriteBuilder do
         File.expand_path(%{./spec/fixtures/icons/#{i}.svg})
       end
 
-      expect(sprite_builder.source_file_paths).to eq(file_paths)
+      expect(sprite_builder.source_file_paths).to eq file_paths
     end
   end
 end
