@@ -107,4 +107,33 @@ describe Svgeez::SpriteBuilder do
       expect(sprite_builder.source_file_paths).to eq file_paths
     end
   end
+
+  context '#source_is_destination?' do
+    it 'should return true if @source and @destination are the same.' do
+      sprite_builder = Svgeez::SpriteBuilder.new({
+        'source' => './foo',
+        'destination' => './foo'
+      })
+
+      expect(sprite_builder.source_is_destination?).to be true
+    end
+
+    it 'should return true if @destination is within @source.' do
+      sprite_builder = Svgeez::SpriteBuilder.new({
+        'source' => './foo',
+        'destination' => './foo/bar'
+      })
+
+      expect(sprite_builder.source_is_destination?).to be true
+    end
+
+    it 'should return false if @destination is not within or the same as @source.' do
+      sprite_builder = Svgeez::SpriteBuilder.new({
+        'source' => './foo',
+        'destination' => './bar'
+      })
+
+      expect(sprite_builder.source_is_destination?).to be false
+    end
+  end
 end
