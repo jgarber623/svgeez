@@ -37,7 +37,7 @@ module Svgeez
       %{<svg id="#{destination_file_id}" style="display: none;" version="1.1">}.tap do |destination_file_contents|
         # Loop over all source files, grabbing their content, and appending to `destination_file_contents`
         source_file_paths.each do |file_path|
-          file_contents = use_svgo? ? `svgo -i #{file_path} -o -` : IO.read(file_path)
+          file_contents = use_svgo? ? `svgo -i #{file_path.gsub(/['"\s]/, '\\\\\0')} -o -` : IO.read(file_path)
           pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m
 
           file_contents.match(pattern) do |matches|
