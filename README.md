@@ -105,20 +105,24 @@ For example, a file named `menu.svg` in `~/Sites/sixtwothree.org/images/icons` w
 
 ### Markup
 
-To use an svgeez-generated SVG sprite file, first include the file's contents at the top of your HTML page, just after the opening `<body>` element.
+To use an svgeez-generated SVG sprite file, first include the file's contents at the bottom of your HTML page.
 
 In a Rails 4 application:
 
 ```erb
 <body>
+    <!-- Your page’s awesome content goes here! -->
+
     <%= raw Rails.application.assets.find_asset('icons.svg') %>
 </body>
 ```
 
 Or, with PHP:
 
-```php
+```html
 <body>
+    <!-- Your page’s awesome content goes here! -->
+
     <?php include_once('path/to/icons.svg'); ?>
 </body>
 ```
@@ -133,12 +137,12 @@ A more complete example from a Rails 4 application's layout file:
 
 ```erb
 <body>
-    <%= raw Rails.application.assets.find_asset('icons.svg') %>
-
     <button>
         <svg><use xlink:href="#icons-menu"></svg>
         Menu
     </button>
+
+    <%= raw Rails.application.assets.find_asset('icons.svg') %>
 </body>
 ```
 
@@ -156,7 +160,7 @@ button {
 }
 
 button svg {
-    fill: #c00; // Absent this declaration, the icon's fill color would be #333
+    fill: #c00; // Absent this declaration, the icon’s fill color would be #333
 }
 ```
 
