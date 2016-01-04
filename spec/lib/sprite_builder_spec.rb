@@ -93,4 +93,18 @@ describe Svgeez::SpriteBuilder do
       expect(sprite_builder.destination_folder_path).to eq(%{#{Dir.pwd}/foo})
     end
   end
+
+  context '#source_file_paths' do
+    it 'should return an array of file paths.' do
+      sprite_builder = Svgeez::SpriteBuilder.new({
+        'source' => './spec/fixtures/icons',
+      })
+
+      file_paths = %w{facebook github heart skull twitter}.collect do |i|
+        File.expand_path(%{./spec/fixtures/icons/#{i}.svg})
+      end
+
+      expect(sprite_builder.source_file_paths).to eq(file_paths)
+    end
+  end
 end
