@@ -29,7 +29,6 @@ describe Svgeez::SpriteBuilder do
   end
 
   context '#destination_file_name' do
-    # TODO
     it 'should return a string when @destination quacks like a folder.' do
       sprite_builder = Svgeez::SpriteBuilder.new({
         'destination' => './foo'
