@@ -109,7 +109,7 @@ In a Rails 4 application:
 
 ```erb
 <body>
-    <%= raw assets.find_asset('icons.svg') %>
+    <%= raw Rails.application.assets.find_asset('icons.svg') %>
 </body>
 ```
 
@@ -131,7 +131,7 @@ A more complete example from a Rails 4 application's layout file:
 
 ```erb
 <body>
-    <%= raw assets.find_asset('icons.svg') %>
+    <%= raw Rails.application.assets.find_asset('icons.svg') %>
 
     <button>
         <svg><use xlink:href="#icons-menu"></svg>
