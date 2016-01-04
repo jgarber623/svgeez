@@ -45,7 +45,7 @@ module Svgeez
           end
 
           file_contents.match(pattern) do |matches|
-            destination_file_contents << %{<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+            destination_file_contents << %{<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
           end
         end
 

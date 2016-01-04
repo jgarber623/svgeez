@@ -101,6 +101,8 @@ For example, a file named `menu.svg` in `~/Sites/sixtwothree.org/images/icons` w
 </symbol>
 ```
 
+**Note:** Single quotes, double quotes, and spaces in individual icon file names will be replaced with dashes. This _could_ result in two `<symbol>`s with the same `id` attribute value. Keep this in mind when naming your source icon files.
+
 ### Markup
 
 To use an svgeez-generated SVG sprite file, first include the file's contents at the top of your HTML page, just after the opening `<body>` element.
