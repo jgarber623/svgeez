@@ -34,23 +34,21 @@ module Svgeez
     end
 
     def build_destination_file_contents
-      %{<svg id="#{destination_file_id}" style="display: none;" version="1.1">}.tap do |destination_file_contents|
-        # Loop over all source files, grabbing their content, and appending to `destination_file_contents`
+      destination_file_contents = '<svg>'.tap do |file_contents|
         source_file_paths.each do |file_path|
-          file_contents = IO.read(file_path)
-          pattern = /^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m
-
-          if use_svgo?
-            file_contents = `cat <<EOF | svgo -i - -o -\n#{file_contents}\nEOF`
-          end
-
-          file_contents.match(pattern) do |matches|
-            destination_file_contents << %{<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-').downcase}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
+          IO.read(file_path).match(/^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m) do |matches|
+            file_contents << %{<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-')}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
           end
         end
 
-        destination_file_contents << '</svg>'
+        file_contents << '</svg>'
       end
+
+      if use_svgo?
+        destination_file_contents = `cat <<EOF | svgo --disable=removeUselessDefs -i - -o -\n#{destination_file_contents}\nEOF`
+      end
+
+      destination_file_contents.insert(4, %{ id="#{destination_file_id}" style="display: none;" version="1.1"})
     end
 
     def destination_file_id
