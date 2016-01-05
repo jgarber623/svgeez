@@ -82,7 +82,7 @@ module Svgeez
     end
 
     def source_is_destination?
-      !%r{^#{@source}}.match(destination_folder_path).nil?
+      %r{^#{@source}} =~ destination_folder_path
     end
 
     def svgo_installed?

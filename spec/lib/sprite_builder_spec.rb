@@ -115,7 +115,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo'
       })
 
-      expect(sprite_builder.source_is_destination?).to be true
+      expect(sprite_builder.source_is_destination?).to be_truthy
     end
 
     it 'should return true if @destination is within @source.' do
@@ -124,7 +124,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './foo/bar'
       })
 
-      expect(sprite_builder.source_is_destination?).to be true
+      expect(sprite_builder.source_is_destination?).to be_truthy
     end
 
     it 'should return false if @destination is not within or the same as @source.' do
@@ -133,7 +133,7 @@ describe Svgeez::SpriteBuilder do
         'destination' => './bar'
       })
 
-      expect(sprite_builder.source_is_destination?).to be false
+      expect(sprite_builder.source_is_destination?).to be_falsy
     end
   end
 end
