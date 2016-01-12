@@ -45,7 +45,7 @@ module Svgeez
       end
 
       if use_svgo?
-        destination_file_contents = `cat <<EOF | svgo --disable=removeUselessDefs -i - -o -\n#{destination_file_contents}\nEOF`
+        destination_file_contents = `cat <<EOF | svgo --disable=cleanupIDs -i - -o -\n#{destination_file_contents}\nEOF`
       end
 
       destination_file_contents.insert(4, %{ id="#{destination_file_id}" style="display: none;" version="1.1"})
