@@ -170,12 +170,12 @@ You want to help make svgeez better? Hell yeah! I like your enthusiasm. For more
 
 ### Donations
 
-If diving into Ruby isn't your thing, but you'd still like to support svgeez, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgements](#acknowledgements) below.
+If diving into Ruby isn't your thing, but you'd still like to support svgeez, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgments](#acknowledgments) below.
 
 [![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg)](https://cash.me/$jgarber)
 [![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg)](https://www.paypal.me/jgarber)
 
-## Acknowledgements
+## Acknowledgments
 
 svgeez benefited greatly from the hard work done by the folks working on the following projects:
 
