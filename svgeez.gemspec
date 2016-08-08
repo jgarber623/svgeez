@@ -4,13 +4,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'svgeez/version'
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = '>= 2.2.5'
+
   spec.name          = 'svgeez'
   spec.version       = Svgeez::VERSION
   spec.authors       = ['Jason Garber']
   spec.email         = ['jason@sixtwothree.org']
 
-  spec.summary       = %{Automatically generate an SVG sprite from a folder of SVG icons.}
-  spec.description   = %{Automatically generate an SVG sprite from a folder of SVG icons.}
+  spec.summary       = 'Automatically generate an SVG sprite from a folder of SVG icons.'
+  spec.description   = spec.summary
   spec.homepage      = 'https://github.com/jgarber623/svgeez'
   spec.license       = 'MIT'
 

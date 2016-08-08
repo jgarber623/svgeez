@@ -17,7 +17,7 @@ module Svgeez
         end
 
         def process(options)
-          Svgeez.logger.info %{Watching `#{File.expand_path(options['source'])}` for changes... Press ctrl-c to stop.}
+          Svgeez.logger.info %(Watching `#{File.expand_path(options['source'])}` for changes... Press ctrl-c to stop.)
 
           listener = Listen.to(options['source'], only: /\.svg$/) do
             Svgeez::Commands::Build.process(options)

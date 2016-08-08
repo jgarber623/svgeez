@@ -3,56 +3,56 @@ module Svgeez
     def initialize(options)
       @source = File.expand_path(options.fetch('source', './'))
       @destination = File.expand_path(options.fetch('destination', './_svgeez/svgeez.svg'))
-      @with_svgo = options['svgo']
+      @svgo = options['svgo']
     end
 
     def build
-      unless source_is_destination?
-        if source_file_paths.any?
-          Svgeez.logger.info %{Generating sprite at `#{destination_file_path}` from #{source_file_paths.length} SVG#{'s' if source_file_paths.length > 1}...}
+      if !source_is_destination?
+        Svgeez.logger.error %(Setting `source` and `destination` to the same path isn't allowed!)
+      elsif source_file_paths.any?
+        Svgeez.logger.info %(Generating sprite at `#{destination_file_path}` from #{source_file_paths.length} SVG#{'s' if source_file_paths.length > 1}...)
 
-          # Make destination folder
-          FileUtils.mkdir_p(destination_folder_path)
+        # Make destination folder
+        FileUtils.mkdir_p(destination_folder_path)
 
-          # Notify if SVGO requested but not found
-          if @with_svgo && !svgo_installed?
-            Svgeez.logger.warn %{Unable to find `svgo` in your PATH. Continuing with standard sprite generation...}
-          end
-
-          # Write the file
-          File.open(destination_file_path, 'w') do |f|
-            f.write build_destination_file_contents
-          end
-
-          Svgeez.logger.info %{Successfully generated sprite at `#{destination_file_path}`.}
-        else
-          Svgeez.logger.warn %{No SVGs were found in `#{@source}`.}
+        # Notify if SVGO requested but not found
+        if @svgo && !svgo_installed?
+          Svgeez.logger.warn %(Unable to find `svgo` in your PATH. Continuing with standard sprite generation...)
         end
+
+        # Write the file
+        File.open(destination_file_path, 'w') do |f|
+          f.write build_destination_file_contents
+        end
+
+        Svgeez.logger.info %(Successfully generated sprite at `#{destination_file_path}`.)
       else
-        Svgeez.logger.error %{Setting `source` and `destination` to the same path isn't allowed!}
+        Svgeez.logger.warn %(No SVGs were found in `#{@source}`.)
       end
     end
 
-    def build_destination_file_contents
-      destination_file_contents = '<svg>'.tap do |file_contents|
-        source_file_paths.each do |file_path|
-          IO.read(file_path).match(/^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)<\/svg>/m) do |matches|
-            file_contents << %{<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-')}" #{matches[:viewbox]}>#{matches[:content]}</symbol>}
-          end
-        end
+    private
 
-        file_contents << '</svg>'
+    def build_destination_file_contents
+      destination_file_contents = '<svg>'
+
+      source_file_paths.each do |file_path|
+        IO.read(file_path).match(%r{^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)</svg>}m) do |matches|
+          destination_file_contents << %(<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-')}" #{matches[:viewbox]}>#{matches[:content]}</symbol>)
+        end
       end
 
-      if use_svgo?
+      destination_file_contents << '</svg>'
+
+      if @svgo && svgo_installed?
         destination_file_contents = `cat <<EOF | svgo --disable=cleanupIDs -i - -o -\n#{destination_file_contents}\nEOF`
       end
 
-      destination_file_contents.insert(4, %{ id="#{destination_file_id}" style="display: none;" version="1.1"})
+      destination_file_contents.insert(4, %( id="#{destination_file_id}" style="display: none;" version="1.1"))
     end
 
     def destination_file_id
-      @destination_file_id ||= File.basename(destination_file_name, '.svg').gsub(' ', '-')
+      @destination_file_id ||= File.basename(destination_file_name, '.svg').tr(' ', '-')
     end
 
     def destination_file_name
@@ -80,15 +80,11 @@ module Svgeez
     end
 
     def source_is_destination?
-      %r{^#{@source}} =~ destination_folder_path
+      /^#{@source}/ =~ destination_folder_path
     end
 
     def svgo_installed?
       @svgo_installed ||= find_executable0('svgo')
-    end
-
-    def use_svgo?
-      @use_svgo ||= @with_svgo && svgo_installed?
     end
   end
 end
