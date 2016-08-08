@@ -1,14 +1,17 @@
+---
 engines:
   duplication:
     enabled: true
     config:
       languages:
         - ruby
+  fixme:
+    enabled: true
   rubocop:
     enabled: true
 ratings:
   paths:
-    - bin/**
-    - lib/**
-  exclude_paths:
-    - spec/
+    - bin/
+    - lib/
+exclude_paths:
+  - spec/
