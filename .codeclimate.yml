@@ -6,3 +6,9 @@ engines:
         - ruby
   rubocop:
     enabled: true
+ratings:
+  paths:
+    - bin/**
+    - lib/**
+  exclude_paths:
+    - spec/
