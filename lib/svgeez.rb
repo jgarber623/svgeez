@@ -1,7 +1,6 @@
 require 'fileutils'
 require 'listen'
 require 'logger'
-require 'mkmf'
 
 require 'svgeez/version'
 require 'svgeez/command'

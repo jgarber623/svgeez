@@ -136,4 +136,41 @@ describe Svgeez::SpriteBuilder do
       expect(sprite_builder.send(:source_is_destination?)).to be_falsy
     end
   end
+
+  context '#build' do
+    context 'when the source directory and destination directory are the same' do
+      let(:sprite_builder) do
+        Svgeez::SpriteBuilder.new(
+          'source' => './foo',
+          'destination' => './foo'
+        )
+      end
+
+      it 'logs an error' do
+        expect(Svgeez.logger).to receive(:error).with(%(Setting `source` and `destination` to the same path isn't allowed!))
+        sprite_builder.build
+      end
+    end
+
+    context 'when the source directory and destination directory are different' do
+      let(:sprite_builder) do
+        Svgeez::SpriteBuilder.new(
+          'source' => './spec/fixtures/icons',
+          'destination' => './spec/fixtures'
+        )
+      end
+
+      let(:file) { double(File) }
+
+      before do
+        allow(File).to receive(:open).and_yield(file)
+        allow(file).to receive(:write)
+      end
+
+      it 'starts to generate the spritesheet' do
+        expect(Svgeez.logger).to receive(:info).at_least(1).times
+        sprite_builder.build
+      end
+    end
+  end
 end
