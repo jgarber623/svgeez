@@ -9,7 +9,9 @@ module Svgeez
     def build
       if source_is_destination?
         Svgeez.logger.error %(Setting `source` and `destination` to the same path isn't allowed!)
-      elsif source_file_paths.any?
+      elsif source_file_paths.empty?
+        Svgeez.logger.warn %(No SVGs were found in `#{@source}`.)
+      else
         Svgeez.logger.info %(Generating sprite at `#{destination_file_path}` from #{source_file_paths.length} SVG#{'s' if source_file_paths.length > 1}...)
 
         # Make destination folder
@@ -26,8 +28,6 @@ module Svgeez
         end
 
         Svgeez.logger.info %(Successfully generated sprite at `#{destination_file_path}`.)
-      else
-        Svgeez.logger.warn %(No SVGs were found in `#{@source}`.)
       end
     end
 
