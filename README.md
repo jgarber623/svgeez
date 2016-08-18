@@ -190,6 +190,10 @@ Lastly, the sample icons in `spec/fixtures/icons` are from [Brent Jackson](https
 
 svgeez is written and maintained by [Jason Garber](https://github.com/jgarber623).
 
+### Contributors
+
+- [Brett Wilkins](https://github.com/bwilkins)
+
 ## License
 
 svgeez is freely available under the [MIT License](http://opensource.org/licenses/MIT). Use it, learn from it, fork it, improve it, change it, tailor it to your needs.
