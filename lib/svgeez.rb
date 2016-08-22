@@ -13,7 +13,5 @@ module Svgeez
     @logger ||= Logger.new(STDOUT)
   end
 
-  logger.formatter = proc do |_, _, _, msg|
-    "#{msg}\n"
-  end
+  logger.formatter = proc { |_, _, _, msg| "#{msg}\n" }
 end
