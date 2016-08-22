@@ -40,9 +40,11 @@ describe Svgeez::SpriteBuilder do
         )
       end
 
+      let(:file_utils) { double(FileUtils) }
       let(:file) { double(File) }
 
       before do
+        allow(FileUtils).to receive(:mkdir_p)
         allow(File).to receive(:open).and_yield(file)
         allow(file).to receive(:write)
       end
