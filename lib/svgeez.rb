@@ -9,10 +9,8 @@ require 'svgeez/commands/watch'
 require 'svgeez/sprite_builder'
 
 module Svgeez
-  class << self
-    def logger
-      @logger ||= Logger.new(STDOUT)
-    end
+  def self.logger
+    @logger ||= Logger.new(STDOUT)
   end
 
   logger.formatter = proc do |_, _, _, msg|
