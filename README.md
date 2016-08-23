@@ -63,8 +63,8 @@ The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/
 
 |Option|Description|
 |---|---|
-|`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./`).|
-|`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./_svgeez/svgeez.svg`)|
+|`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./_svgeez`).|
+|`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./svgeez.svg`)|
 |`--with-svgo`|Optimize source SVGs with [SVGO](https://github.com/svg/svgo/) before sprite generation (non-destructive)|
 
 ### The `watch` command

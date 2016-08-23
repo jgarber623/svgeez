@@ -1,8 +1,8 @@
 module Svgeez
   class SpriteBuilder
     def initialize(options = {})
-      @source = File.expand_path(options.fetch('source', './'))
-      @destination = File.expand_path(options.fetch('destination', './_svgeez/svgeez.svg'))
+      @source = File.expand_path(options.fetch('source', './_svgeez'))
+      @destination = File.expand_path(options.fetch('destination', './svgeez.svg'))
       @svgo = options['svgo']
     end
 

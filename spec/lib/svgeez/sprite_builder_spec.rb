@@ -40,7 +40,6 @@ describe Svgeez::SpriteBuilder do
         )
       end
 
-      let(:file_utils) { double(FileUtils) }
       let(:file) { double(File) }
 
       before do
@@ -71,7 +70,7 @@ describe Svgeez::SpriteBuilder do
 
   describe '#destination_file_id' do
     context 'when @destination is not specified' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new({}) }
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
       it 'returns a string.' do
         expect(sprite_builder.send(:destination_file_id)).to eq 'svgeez'
@@ -119,10 +118,10 @@ describe Svgeez::SpriteBuilder do
 
   describe '#destination_file_path' do
     context 'when @destination is not specified' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new({}) }
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
       it 'returns a path.' do
-        expect(sprite_builder.send(:destination_file_path)).to eq "#{Dir.pwd}/_svgeez/svgeez.svg"
+        expect(sprite_builder.send(:destination_file_path)).to eq "#{Dir.pwd}/svgeez.svg"
       end
     end
 
@@ -153,10 +152,10 @@ describe Svgeez::SpriteBuilder do
 
   describe '#destination_folder_path' do
     context 'when @destination is not specified' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new({}) }
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
       it 'returns a path.' do
-        expect(sprite_builder.send(:destination_folder_path)).to eq "#{Dir.pwd}/_svgeez"
+        expect(sprite_builder.send(:destination_folder_path)).to eq Dir.pwd
       end
     end
 
@@ -186,20 +185,40 @@ describe Svgeez::SpriteBuilder do
   end
 
   describe '#source_file_paths' do
-    let :sprite_builder do
-      Svgeez::SpriteBuilder.new(
-        'source' => './spec/fixtures/icons'
-      )
-    end
+    context 'when @source is not specified' do
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
-    let :file_paths do
-      %w(facebook github heart skull twitter).collect do |i|
-        File.expand_path("./spec/fixtures/icons/#{i}.svg")
+      let :file_paths do
+        %w(facebook github heart skull twitter).collect do |i|
+          File.expand_path("./_svgeez/#{i}.svg")
+        end
+      end
+
+      before do
+        allow(Dir).to receive(:glob).and_return(file_paths)
+      end
+
+      it 'returns an array of file paths.' do
+        expect(sprite_builder.send(:source_file_paths)).to eq file_paths
       end
     end
 
-    it 'returns an array of of file paths.' do
-      expect(sprite_builder.send(:source_file_paths)).to eq file_paths
+    context 'when @source is specified' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'source' => './spec/fixtures/icons'
+        )
+      end
+
+      let :file_paths do
+        %w(facebook github heart skull twitter).collect do |i|
+          File.expand_path("./spec/fixtures/icons/#{i}.svg")
+        end
+      end
+
+      it 'returns an array of file paths.' do
+        expect(sprite_builder.send(:source_file_paths)).to eq file_paths
+      end
     end
   end
 
