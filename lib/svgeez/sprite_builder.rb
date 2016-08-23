@@ -80,7 +80,7 @@ module Svgeez
     end
 
     def source_is_destination?
-      /^#{@source}/ =~ destination_folder_path
+      /\A#{@source}/ =~ destination_folder_path
     end
 
     def svgo_installed?
