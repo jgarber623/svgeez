@@ -2,8 +2,8 @@
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w(.. lib))
 
-require 'svgeez'
 require 'mercenary'
+require 'svgeez'
 
 Mercenary.program(:svgeez) do |p|
   p.version Svgeez::VERSION

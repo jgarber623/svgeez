@@ -1,4 +1,6 @@
 describe Svgeez::SpriteBuilder do
+  # Public methods
+
   describe '#build' do
     let(:logger) { Svgeez.logger }
 
@@ -10,7 +12,7 @@ describe Svgeez::SpriteBuilder do
         )
       end
 
-      let(:error_message) { %(Setting `source` and `destination` to the same path isn't allowed!) }
+      let(:error_message) { "Setting `source` and `destination` to the same path isn't allowed!" }
 
       it 'logs an error.' do
         expect(logger).to receive(:error).with(error_message)
@@ -19,13 +21,9 @@ describe Svgeez::SpriteBuilder do
     end
 
     context 'when @source contains no SVG files' do
-      let :sprite_builder do
-        Svgeez::SpriteBuilder.new(
-          'source' => './foo'
-        )
-      end
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
-      let(:warning_message) { %(No SVGs were found in `#{File.expand_path('./foo')}`.) }
+      let(:warning_message) { "No SVGs were found in `#{File.expand_path('./_svgeez')}`." }
 
       it 'logs a warning.' do
         expect(logger).to receive(:warn).with(warning_message)
@@ -49,11 +47,58 @@ describe Svgeez::SpriteBuilder do
       end
 
       it 'writes a file.' do
-        expect(logger).to receive(:info).at_least(1).times
+        expect(logger).to receive(:info).exactly(:twice)
+
         sprite_builder.build
       end
     end
   end
+
+  describe '#destination' do
+    context 'when @destination is not specified' do
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+
+      it 'returns the default path.' do
+        expect(sprite_builder.destination).to eq(File.expand_path('./svgeez.svg'))
+      end
+    end
+
+    context 'when @destination is specified' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'destination' => './foo.svg'
+        )
+      end
+
+      it 'returns the specified path' do
+        expect(sprite_builder.destination).to eq(File.expand_path('./foo.svg'))
+      end
+    end
+  end
+
+  describe '#source' do
+    context 'when @source is not specified' do
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+
+      it 'returns the default path.' do
+        expect(sprite_builder.source).to eq(File.expand_path('./_svgeez'))
+      end
+    end
+
+    context 'when @source is specified' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'source' => './foo'
+        )
+      end
+
+      it 'returns the specified path.' do
+        expect(sprite_builder.source).to eq(File.expand_path('./foo'))
+      end
+    end
+  end
+
+  # Private methods
 
   describe '#build_destination_file_contents' do
     let :sprite_builder do
@@ -68,12 +113,26 @@ describe Svgeez::SpriteBuilder do
     end
   end
 
+  describe '#collect_source_files_contents' do
+    let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+
+    let(:file_paths) { [File.expand_path('./spec/fixtures/icons/skull.svg')] }
+
+    before do
+      allow(sprite_builder).to receive(:source_file_paths).and_return(file_paths)
+    end
+
+    it 'returns an array of strings.' do
+      expect(sprite_builder.send(:collect_source_files_contents)).to match_array([%(<symbol id="svgeez-skull" viewBox="0 0 32 32">\n  <path d="M16 0 C6 0 2 4 2 14 L2 22 L6 24 L6 30 L26 30 L26 24 L30 22 L30 14 C30 4 26 0 16 0 M9 12 A4.5 4.5 0 0 1 9 21 A4.5 4.5 0 0 1 9 12 M23 12 A4.5 4.5 0 0 1 23 21 A4.5 4.5 0 0 1 23 12"></path>\n</symbol>)])
+    end
+  end
+
   describe '#destination_file_id' do
     context 'when @destination is not specified' do
       let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
       it 'returns a string.' do
-        expect(sprite_builder.send(:destination_file_id)).to eq 'svgeez'
+        expect(sprite_builder.send(:destination_file_id)).to eq('svgeez')
       end
     end
 
@@ -85,145 +144,89 @@ describe Svgeez::SpriteBuilder do
       end
 
       it 'returns a string.' do
-        expect(sprite_builder.send(:destination_file_id)).to eq 'foo'
+        expect(sprite_builder.send(:destination_file_id)).to eq('foo')
       end
     end
   end
 
   describe '#destination_file_name' do
-    context 'when @destination quacks like a folder' do
-      let :sprite_builder do
-        Svgeez::SpriteBuilder.new(
-          'destination' => './foo'
-        )
-      end
-
-      it 'returns a string.' do
-        expect(sprite_builder.send(:destination_file_name)).to eq 'svgeez.svg'
-      end
-    end
-
-    context 'when @destination quacks like a file' do
-      let :sprite_builder do
-        Svgeez::SpriteBuilder.new(
-          'destination' => './foo/bar.svg'
-        )
-      end
-
-      it 'returns a string.' do
-        expect(sprite_builder.send(:destination_file_name)).to eq 'bar.svg'
-      end
-    end
-  end
-
-  describe '#destination_file_path' do
-    context 'when @destination is not specified' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
-
-      it 'returns a path.' do
-        expect(sprite_builder.send(:destination_file_path)).to eq "#{Dir.pwd}/svgeez.svg"
-      end
-    end
-
-    context 'when @destination quacks like a folder' do
-      let :sprite_builder do
-        Svgeez::SpriteBuilder.new(
-          'destination' => './foo'
-        )
-      end
-
-      it 'returns a path.' do
-        expect(sprite_builder.send(:destination_file_path)).to eq "#{Dir.pwd}/foo/svgeez.svg"
-      end
-    end
-
-    context 'when @destination quacks like a file' do
+    context 'when @destination is a path to a file' do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
           'destination' => './foo.svg'
         )
       end
 
-      it 'returns a path.' do
-        expect(sprite_builder.send(:destination_file_path)).to eq "#{Dir.pwd}/foo.svg"
+      it 'returns the specified file name.' do
+        expect(sprite_builder.send(:destination_file_name)).to eq('foo.svg')
+      end
+    end
+
+    context 'when @destination is a path to a folder' do
+      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+
+      it 'returns the default file name.' do
+        expect(sprite_builder.send(:destination_file_name)).to eq('svgeez.svg')
       end
     end
   end
 
+  describe '#destination_file_path' do
+    let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+
+    it 'returns a file path.' do
+      expect(sprite_builder.send(:destination_file_path)).to eq(File.expand_path('./svgeez.svg'))
+    end
+  end
+
   describe '#destination_folder_path' do
-    context 'when @destination is not specified' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+    let(:expected_destination_folder_path) { File.expand_path('./foo') }
 
-      it 'returns a path.' do
-        expect(sprite_builder.send(:destination_folder_path)).to eq Dir.pwd
-      end
-    end
-
-    context 'when @destination quacks like a folder' do
-      let :sprite_builder do
-        Svgeez::SpriteBuilder.new(
-          'destination' => './foo'
-        )
-      end
-
-      it 'returns a path.' do
-        expect(sprite_builder.send(:destination_folder_path)).to eq "#{Dir.pwd}/foo"
-      end
-    end
-
-    context 'when @destination quacks like a file' do
+    context 'when @destination is a path to a file' do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
           'destination' => './foo/bar.svg'
         )
       end
 
-      it 'returns a path.' do
-        expect(sprite_builder.send(:destination_folder_path)).to eq "#{Dir.pwd}/foo"
+      it 'returns a path to a folder.' do
+        expect(sprite_builder.send(:destination_folder_path)).to eq(expected_destination_folder_path)
+      end
+    end
+
+    context 'when @destination is a path to a folder' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'destination' => './foo'
+        )
+      end
+
+      it 'returns a path to a folder.' do
+        expect(sprite_builder.send(:destination_folder_path)).to eq(expected_destination_folder_path)
       end
     end
   end
 
   describe '#source_file_paths' do
-    context 'when @source is not specified' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+    let(:sprite_builder) { Svgeez::SpriteBuilder.new }
 
-      let :file_paths do
-        %w(facebook github heart skull twitter).collect do |i|
-          File.expand_path("./_svgeez/#{i}.svg")
-        end
-      end
-
-      before do
-        allow(Dir).to receive(:glob).and_return(file_paths)
-      end
-
-      it 'returns an array of file paths.' do
-        expect(sprite_builder.send(:source_file_paths)).to eq file_paths
+    let :file_paths do
+      %w(facebook github heart skull twitter).collect do |i|
+        File.expand_path("./_svgeez/#{i}.svg")
       end
     end
 
-    context 'when @source is specified' do
-      let :sprite_builder do
-        Svgeez::SpriteBuilder.new(
-          'source' => './spec/fixtures/icons'
-        )
-      end
+    before do
+      allow(Dir).to receive(:glob).and_return(file_paths)
+    end
 
-      let :file_paths do
-        %w(facebook github heart skull twitter).collect do |i|
-          File.expand_path("./spec/fixtures/icons/#{i}.svg")
-        end
-      end
-
-      it 'returns an array of file paths.' do
-        expect(sprite_builder.send(:source_file_paths)).to eq file_paths
-      end
+    it 'returns an array of file paths.' do
+      expect(sprite_builder.send(:source_file_paths)).to eq(file_paths)
     end
   end
 
   describe '#source_is_destination?' do
-    context 'when @source and @destination are the same' do
+    context 'when @source and @desination are the same' do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
           'source' => './foo',
@@ -240,7 +243,7 @@ describe Svgeez::SpriteBuilder do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
           'source' => './foo',
-          'destination' => './foo/bar'
+          'destination' => './foo/bar.svg'
         )
       end
 
@@ -249,7 +252,20 @@ describe Svgeez::SpriteBuilder do
       end
     end
 
-    context 'when @destination is different from @source' do
+    context 'when @source is nested within @destination' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'source' => './foo/bar',
+          'destination' => './foo'
+        )
+      end
+
+      it 'returns false.' do
+        expect(sprite_builder.send(:source_is_destination?)).to be_falsy
+      end
+    end
+
+    context 'when @source and @destination are different' do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
           'source' => './foo',

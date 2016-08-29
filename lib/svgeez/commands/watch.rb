@@ -16,15 +16,18 @@ module Svgeez
       end
 
       def self.process(options)
-        Svgeez.logger.info %(Watching `#{File.expand_path(options['source'])}` for changes... Press ctrl-c to stop.)
+        sprite_builder = Svgeez::SpriteBuilder.new(options)
 
-        listener = Listen.to(options['source'], only: /\.svg\z/) do
-          Svgeez::Commands::Build.process(options)
+        listener = Listen.to(sprite_builder.source, only: /\.svg\z/) do
+          sprite_builder.build
         end
+
+        Svgeez.logger.info "Watching `#{sprite_builder.source}` for changes... Press ctrl-c to stop."
 
         listener.start
         sleep
       rescue Interrupt
+        Svgeez.logger.info 'Quitting svgeez...'
       end
     end
   end
