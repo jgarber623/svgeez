@@ -190,7 +190,7 @@ Lastly, the sample icons in `spec/fixtures/icons` are from [Brent Jackson](https
 
 svgeez is written and maintained by [Jason Garber](https://github.com/jgarber623).
 
-### Contributors
+### Additional Contributors
 
 - [Brett Wilkins](https://github.com/bwilkins)
 
