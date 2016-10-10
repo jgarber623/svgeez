@@ -107,17 +107,23 @@ For example, a file named `menu.svg` in `~/Sites/sixtwothree.org/images/icons` w
 
 To use an svgeez-generated SVG sprite file, first include the file's contents at the bottom of your HTML page.
 
-In a Rails 5 application:
+In a Rails 4.1.x or lower application:
 
 ```erb
 <body>
     <!-- Your page’s awesome content goes here! -->
 
-    <% if Rails.application.config.assets.compile %>
-      <%= raw Rails.application.assets.find_asset('icons.svg') %>
-    <% else %>
-      <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
-    <% end %>
+    <%= raw Rails.application.assets.find_asset('icons.svg') %>
+</body>
+```
+
+In a Rails 4.2.x or 5 application:
+
+```erb
+<body>
+    <!-- Your page’s awesome content goes here! -->
+
+    <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
 </body>
 ```
 
@@ -137,7 +143,7 @@ Next, wherever you want to include an icon in your user interface, use HTML simi
 <svg><use xlink:href="#icons-menu"></svg>
 ```
 
-A more complete example from a Rails 5 application's layout file:
+A more complete example from a Rails 4.1.x or lower application's layout file:
 
 ```erb
 <body>
@@ -146,11 +152,20 @@ A more complete example from a Rails 5 application's layout file:
         Menu
     </button>
 
-    <% if Rails.application.config.assets.compile %>
-      <%= raw Rails.application.assets.find_asset('icons.svg') %>
-    <% else %>
-      <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
-    <% end %>
+    <%= raw Rails.application.assets.find_asset('icons.svg') %>
+</body>
+```
+
+A more complete example from a Rails 4.2.x or 5 application's layout file:
+
+```erb
+<body>
+    <button>
+        <svg><use xlink:href="#icons-menu"></svg>
+        Menu
+    </button>
+
+    <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
 </body>
 ```
 
