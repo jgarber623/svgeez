@@ -216,6 +216,7 @@ svgeez is written and maintained by [Jason Garber](https://github.com/jgarber623
 ### Additional Contributors
 
 - [Brett Wilkins](https://github.com/bwilkins)
+- [danny](https://github.com/f96q)
 
 ## License
 
