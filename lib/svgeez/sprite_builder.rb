@@ -15,11 +15,6 @@ module Svgeez
         # Make destination folder
         FileUtils.mkdir_p(destination_folder_path)
 
-        # Notify if SVGO requested but not found
-        if svgo_use? && !svgo_installed?
-          Svgeez.logger.warn 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...'
-        end
-
         # Write the file
         File.open(destination_file_path, 'w') do |f|
           f.write build_destination_file_contents
@@ -42,8 +37,12 @@ module Svgeez
     def build_destination_file_contents
       destination_file_contents = "<svg>#{collect_source_files_contents.join}</svg>"
 
-      if svgo_use? && svgo_installed?
-        destination_file_contents = `cat <<EOF | svgo --disable=cleanupIDs -i - -o -\n#{destination_file_contents}\nEOF`
+      if svgo_use?
+        if svgo_installed?
+          destination_file_contents = `cat <<EOF | svgo --disable=cleanupIDs -i - -o -\n#{destination_file_contents}\nEOF`
+        else
+          Svgeez.logger.warn 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...'
+        end
       end
 
       destination_file_contents.insert(4, %( id="#{destination_file_id}" style="display: none;" version="1.1"))

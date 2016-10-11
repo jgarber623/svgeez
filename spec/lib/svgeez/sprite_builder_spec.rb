@@ -101,15 +101,46 @@ describe Svgeez::SpriteBuilder do
   # Private methods
 
   describe '#build_destination_file_contents' do
-    let :sprite_builder do
-      Svgeez::SpriteBuilder.new(
-        'source' => './spec/fixtures/icons',
-        'destination' => './spec/fixtures/icons.svg'
-      )
+    context 'when @svgo is not specified' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'source' => './spec/fixtures/icons',
+          'destination' => './spec/fixtures/icons.svg'
+        )
+      end
+
+      it 'returns a string representation of combined SVG files.' do
+        expect(sprite_builder.send(:build_destination_file_contents)).to eq IO.read('./spec/fixtures/icons.svg')
+      end
     end
 
-    it 'returns a string representation of combined SVG files.' do
-      expect(sprite_builder.send(:build_destination_file_contents)).to eq IO.read('./spec/fixtures/icons.svg')
+    context 'when @svgo is specified' do
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'source' => './spec/fixtures/icons',
+          'destination' => './spec/fixtures/icons.svg',
+          'svgo' => true
+        )
+      end
+
+      context 'and SVGO is not found' do
+        let(:logger) { Svgeez.logger }
+
+        let(:warning_message) { 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...' }
+
+        before do
+          allow(sprite_builder).to receive(:svgo_installed?).and_return(false)
+        end
+
+        it 'logs a warning.' do
+          expect(logger).to receive(:warn).with(warning_message)
+          sprite_builder.build
+        end
+      end
+
+      context 'and SVGO executable is found' do
+        it 'returns a string representation of combined SVG files.'
+      end
     end
   end
 
