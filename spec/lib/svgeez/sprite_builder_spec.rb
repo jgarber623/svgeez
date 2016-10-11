@@ -48,7 +48,6 @@ describe Svgeez::SpriteBuilder do
 
       it 'writes a file.' do
         expect(logger).to receive(:info).exactly(:twice)
-
         sprite_builder.build
       end
     end
@@ -110,7 +109,7 @@ describe Svgeez::SpriteBuilder do
       end
 
       it 'returns a string representation of combined SVG files.' do
-        expect(sprite_builder.send(:build_destination_file_contents)).to eq IO.read('./spec/fixtures/icons.svg')
+        expect(sprite_builder.send(:build_destination_file_contents)).to eq(IO.read('./spec/fixtures/icons.svg'))
       end
     end
 
@@ -134,7 +133,7 @@ describe Svgeez::SpriteBuilder do
 
         it 'logs a warning.' do
           expect(logger).to receive(:warn).with(warning_message)
-          sprite_builder.build
+          sprite_builder.send(:build_destination_file_contents)
         end
       end
 
