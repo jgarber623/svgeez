@@ -11,7 +11,7 @@ I definitely appreciate your interest in (and help improving) svgeez. Thanks!
 
 ## Installation
 
-svgeez is a written in [Ruby](https://www.ruby-lang.org/en/) (version 2.2.5) and development dependencies are managed using the [Bundler](http://bundler.io/) gem.
+svgeez is written in [Ruby](https://www.ruby-lang.org/en/) (version 2.2.5) and development dependencies are managed using the [Bundler](http://bundler.io/) gem.
 
 I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recommend you do the same or use a similar Ruby version manager ([chruby](https://github.com/postmodern/chruby/) or [RVM](https://rvm.io/) come to mind). Once you've installed Ruby 2.2.5 using your method of choice, install the project's gems by running:
 
@@ -21,12 +21,18 @@ bundle install
 
 …from the root of the project.
 
+In order for the test suite to run properly, [SVGO](https://github.com/svg/svgo/) must be installed (and the `svgo` command must be available in your PATH). This is most easily achieved by installing [Node.js](https://nodejs.org/) and running:
+
+```sh
+npm install -g svgo
+```
+
 ## Get set up to contribute
 
 Contributing to svgeez is pretty straightforward:
 
 1. Fork the svgeez repo and clone it.
-1. Install development dependencies by running `bundle install` from the root of the project.
+1. Install development dependencies as outlined [above](#installation).
 1. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
 1. _Write some code!_
 1. Build (`bundle exec rake build`) and install (`bundle exec rake install`) your updated code.
