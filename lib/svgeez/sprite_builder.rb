@@ -1,5 +1,7 @@
 module Svgeez
   class SpriteBuilder
+    DEFAULT_DESTINATION_FILE_NAME = 'svgeez.svg'.freeze
+
     def initialize(options = {})
       @options = options
     end
@@ -25,7 +27,7 @@ module Svgeez
     end
 
     def destination
-      @destination ||= File.expand_path(@options.fetch('destination', './svgeez.svg'))
+      @destination ||= File.expand_path(@options.fetch('destination', "./#{DEFAULT_DESTINATION_FILE_NAME}"))
     end
 
     def source
@@ -64,7 +66,7 @@ module Svgeez
       if destination.end_with?('.svg')
         File.split(destination)[1]
       else
-        'svgeez.svg'
+        DEFAULT_DESTINATION_FILE_NAME
       end
     end
 
