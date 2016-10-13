@@ -194,7 +194,11 @@ describe Svgeez::SpriteBuilder do
     end
 
     context 'when @destination is a path to a folder' do
-      let(:sprite_builder) { Svgeez::SpriteBuilder.new }
+      let :sprite_builder do
+        Svgeez::SpriteBuilder.new(
+          'destination' => './foo'
+        )
+      end
 
       it 'returns the default file name.' do
         expect(sprite_builder.send(:destination_file_name)).to eq('svgeez.svg')
