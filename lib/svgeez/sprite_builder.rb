@@ -47,7 +47,7 @@ module Svgeez
         end
       end
 
-      destination_file_contents.insert(4, %( id="#{destination_file_id}" style="display: none;" version="1.1"))
+      destination_file_contents.insert(4, %( id="#{destination_file_id}" style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg"))
     end
 
     def collect_source_files_contents
