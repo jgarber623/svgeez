@@ -100,6 +100,18 @@ describe Svgeez::SpriteBuilder do
   # Private methods
 
   describe '#build_destination_file_contents' do
+
+    let :sprite_builder do
+      Svgeez::SpriteBuilder.new(
+        'source' => './spec/fixtures/icons',
+        'destination' => './spec/fixtures/icons.svg'
+      )
+    end
+
+    it 'returns a svg string with the xmlns attribute set' do
+        expect(sprite_builder.send(:build_destination_file_contents)).to match(%r{^<svg.*xmlns="http://www.w3.org/2000/svg">}m)
+    end
+
     context 'when @svgo is not specified' do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
