@@ -117,7 +117,6 @@ describe Svgeez::SpriteBuilder do
       let :sprite_builder do
         Svgeez::SpriteBuilder.new(
           'source' => './spec/fixtures/icons',
-          'destination' => './spec/fixtures/icons-svgo.svg',
           'svgo' => true
         )
       end
@@ -139,7 +138,7 @@ describe Svgeez::SpriteBuilder do
 
       context 'and SVGO executable is found' do
         it 'returns a string representation of combined SVG files.' do
-          expect(sprite_builder.send(:build_destination_file_contents)).to eq(IO.read('./spec/fixtures/icons-svgo.svg'))
+          expect(sprite_builder.send(:build_destination_file_contents)).to eq(IO.read('./spec/fixtures/svgeez.svg'))
         end
       end
     end
