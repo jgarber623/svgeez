@@ -11,9 +11,9 @@ I definitely appreciate your interest in (and help improving) svgeez. Thanks!
 
 ## Installation
 
-svgeez is written in [Ruby](https://www.ruby-lang.org/en/) (version 2.2.5) and development dependencies are managed using the [Bundler](http://bundler.io/) gem.
+svgeez is written in [Ruby](https://www.ruby-lang.org/en/) (version 2.2.6) and development dependencies are managed using the [Bundler](http://bundler.io/) gem.
 
-I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recommend you do the same or use a similar Ruby version manager ([chruby](https://github.com/postmodern/chruby/) or [RVM](https://rvm.io/) come to mind). Once you've installed Ruby 2.2.5 using your method of choice, install the project's gems by running:
+I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recommend you do the same or use a similar Ruby version manager ([chruby](https://github.com/postmodern/chruby/) or [RVM](https://rvm.io/) come to mind). Once you've installed Ruby 2.2.6 using your method of choice, install the project's gems by running:
 
 ```sh
 bundle install

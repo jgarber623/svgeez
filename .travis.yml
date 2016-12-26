@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.2.5
+  - 2.2.6
 before_install:
   - npm install -g svgo
 notifications:
