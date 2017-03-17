@@ -1,4 +1,4 @@
-# svgeez
+# svgeez [figma](https://www.figma.com/) edition
 
 **A Ruby gem for automatically generating an SVG sprite from a folder of SVG icons.**
 
