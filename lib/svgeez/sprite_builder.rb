@@ -58,14 +58,20 @@ module Svgeez
           svg_content = svg[:content]
           path_ids = svg_content.scan(/path id="(.+?)"/)
 
-          Array(path_ids).each do |path_id, index|
-            unique_path_id = "path_id-#{SecureRandom.uuid}"
-            svg_content.gsub!(Regexp.new(path_id), unique_path_id)
-          end
+          svg_content = add_unique_ids(svg_content, path_ids)
 
           %(<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-')}" #{svg[:viewbox]}>#{svg_content}</symbol>)
         end
       end
+    end
+
+    def add_unique_ids(svg_content, path_ids)
+      Array(path_ids).each do |path_id, _|
+        unique_path_id = "path_id-#{SecureRandom.uuid}"
+        svg_content.gsub!(Regexp.new(path_id), unique_path_id)
+      end
+
+      svg_content
     end
 
     def destination_file_id
