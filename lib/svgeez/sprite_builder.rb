@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Svgeez
   class SpriteBuilder
     DEFAULT_DESTINATION_FILE_NAME = 'svgeez.svg'.freeze
@@ -52,10 +54,24 @@ module Svgeez
 
     def collect_source_files_contents
       source_file_paths.collect do |file_path|
-        IO.read(file_path).match(%r{^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)</svg>}m) do |matches|
-          %(<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-')}" #{matches[:viewbox]}>#{matches[:content]}</symbol>)
+        IO.read(file_path).match(%r{^<svg.*?(?<viewbox>viewBox=".*?").*?>(?<content>.*?)</svg>}m) do |svg|
+          svg_content = svg[:content]
+          path_ids = svg_content.scan(/path id="(.+?)"/)
+
+          svg_content = add_unique_ids(svg_content, path_ids)
+
+          %(<symbol id="#{destination_file_id}-#{File.basename(file_path, '.svg').gsub(/['"\s]/, '-')}" #{svg[:viewbox]}>#{svg_content}</symbol>)
         end
       end
+    end
+
+    def add_unique_ids(svg_content, path_ids)
+      Array(path_ids).each do |path_id, _|
+        unique_path_id = "path_id-#{SecureRandom.uuid}"
+        svg_content.gsub!(Regexp.new(path_id), unique_path_id)
+      end
+
+      svg_content
     end
 
     def destination_file_id
