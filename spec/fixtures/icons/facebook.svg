@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="10px" height="18px" viewBox="0 0 10 18" enable-background="new 0 0 10 18" xml:space="preserve">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="18px" viewBox="0 0 10 18" enable-background="new 0 0 10 18" xml:space="preserve">
 <g>
-	<use xlink:href="#Path_1" fill="#626262"/>
+  <use xlink:href="#Path_1" fill="#626262"/>
 </g>
 <defs>
   <path id="Path_1" d="M0.896,6.12h1.758V4.411c0-0.754,0.019-1.916,0.567-2.635c0.576-0.762,1.368-1.28,2.729-1.28
-		c2.22,0,3.153,0.316,3.153,0.316l-0.44,2.605c0,0-0.732-0.212-1.416-0.212S5.95,3.45,5.95,4.134V6.12h2.805L8.56,8.665H5.95v8.839
-		H2.654V8.665H0.896V6.12z"/>
+    c2.22,0,3.153,0.316,3.153,0.316l-0.44,2.605c0,0-0.732-0.212-1.416-0.212S5.95,3.45,5.95,4.134V6.12h2.805L8.56,8.665H5.95v8.839
+    H2.654V8.665H0.896V6.12z"/>
 </defs>
 </svg>
