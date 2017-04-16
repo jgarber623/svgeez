@@ -9,20 +9,20 @@ module Svgeez
           add_build_options(c)
 
           c.action do |_, options|
-            Svgeez::Commands::Build.process(options)
-            Svgeez::Commands::Watch.process(options)
+            Build.process(options)
+            Watch.process(options)
           end
         end
       end
 
       def self.process(options)
-        sprite_builder = Svgeez::SpriteBuilder.new(options)
+        builder = Svgeez::Builder.new(options)
 
-        listener = Listen.to(sprite_builder.source, only: /\.svg\z/) do
-          sprite_builder.build
+        listener = Listen.to(builder.source.folder_path, only: /\.svg\z/) do
+          builder.build
         end
 
-        Svgeez.logger.info "Watching `#{sprite_builder.source}` for changes... Press ctrl-c to stop."
+        Svgeez.logger.info "Watching `#{builder.source.folder_path}` for changes... Press ctrl-c to stop."
 
         listener.start
         sleep

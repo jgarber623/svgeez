@@ -9,13 +9,13 @@ module Svgeez
           add_build_options(c)
 
           c.action do |_, options|
-            Svgeez::Commands::Build.process(options)
+            Build.process(options)
           end
         end
       end
 
       def self.process(options)
-        Svgeez::SpriteBuilder.new(options).build
+        Svgeez::Builder.new(options).build
       end
     end
   end
