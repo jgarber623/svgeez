@@ -7,11 +7,17 @@ module Svgeez
     end
 
     def file_paths
-      @file_paths ||= Dir.glob(File.join(folder_path, '*.svg'))
+      Dir.glob(file_paths_pattern)
     end
 
     def folder_path
       @folder_path ||= File.expand_path(@options.fetch('source', DEFAULT_INPUT_FOLDER_PATH))
+    end
+
+    private
+
+    def file_paths_pattern
+      @file_paths_pattern ||= File.join(folder_path, '*.svg')
     end
   end
 end
