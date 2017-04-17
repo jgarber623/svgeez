@@ -2,26 +2,27 @@
 
 **A Ruby gem for automatically generating an SVG sprite from a folder of SVG icons.**
 
-[![Gem Version](https://badge.fury.io/rb/svgeez.svg)](https://badge.fury.io/rb/svgeez)
-[![Build Status](https://travis-ci.org/jgarber623/svgeez.svg?branch=master)](https://travis-ci.org/jgarber623/svgeez)
-[![Code Climate](https://codeclimate.com/github/jgarber623/svgeez/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/svgeez)
-[![Test Coverage](https://codeclimate.com/github/jgarber623/svgeez/badges/coverage.svg)](https://codeclimate.com/github/jgarber623/svgeez/coverage)
+[![Gem Version](https://img.shields.io/gem/v/svgeez.svg?label=gem%20version)](https://rubygems.org/gems/svgeez)
+[![Downloads](https://img.shields.io/gem/dt/svgeez.svg)](https://rubygems.org/gems/svgeez)
+[![Build Status](https://img.shields.io/travis/jgarber623/svgeez/master.svg?label=build%20status)](https://travis-ci.org/jgarber623/svgeez)
+[![Code Climate](https://img.shields.io/codeclimate/github/jgarber623/svgeez.svg)](https://codeclimate.com/github/jgarber623/svgeez)
+[![Coverage](https://img.shields.io/codeclimate/coverage/github/jgarber623/svgeez.svg)](https://codeclimate.com/github/jgarber623/svgeez/coverage)
 
-If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Simply run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
+If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
 _For more on why SVG sprites are the bee's knees as far as icon systems go, give Chris Coyier's original post, [Icon System with SVG Sprites](https://css-tricks.com/svg-sprites-use-better-icon-fonts/), and his follow-up article, [SVG \`symbol\` a Good Choice for Icons](https://css-tricks.com/svg-symbol-good-choice-icons/) a read-through._
 
 ## Key Features
 
-- Provides a simple [CLI](https://en.wikipedia.org/wiki/Command-line_interface) for generating SVG sprite files.
-- Easily integrates with existing projects (e.g. alongside a Rails application using [Foreman](https://github.com/ddollar/foreman)).
+- Provides a [CLI](https://en.wikipedia.org/wiki/Command-line_interface) for generating SVG sprite files.
+- Integrates with existing projects (e.g. alongside a Rails application using [Foreman](https://github.com/ddollar/foreman)).
 - Optionally optimizes SVG files with [SVGO](https://github.com/svg/svgo/).
 
 ## Getting Started
 
 Before installing and using svgeez, you'll want to have Ruby 2.2.6 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). If you're developing on a Mac and using [Homebrew](http://brew.sh/), installing rbenv is [super easy](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x).
 
-svgeez _might_ work with other versions of Ruby, but it's developed in 2.2.6.
+svgeez _might_ work with other versions of Ruby, but it's developed in 2.2.6 and automatically tested against 2.3.4 and 2.4.1 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
 
 ## Installation
 
@@ -77,7 +78,13 @@ Tweaking the example from above:
 $ svgeez watch --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
 ```
 
-svgeez will remaing running, watching for new, removed, or updated SVG files in the provided source folder. As SVG files are added, deleted, or modified in the source folder, svgeez will keep pumping out updated SVG sprite files to the destination folder.
+svgeez will remaing running, watching for new, removed, or updated SVG files in the provided source folder. As SVG files are added, deleted, or modified in the source folder, svgeez will pump out updated SVG sprite files to the destination folder.
+
+### Preparing SVG files for svgeez
+
+svgeez works best with well-organized SVG files. If you're using tools like Sketch or Adobe Illustrator, your source SVG files _may_ contain unnecessary cruft like comments and editor-specific attributes. svgeez will do its best to work with source SVG files, but as a general rule it's good practice to make sure that the SVG files exported from your editor are as concise as possible.
+
+The first section of Jayden Seric's post, [How to optimize SVG](http://jaydenseric.com/blog/how-to-optimize-svg), offers some helpful advice on optimizing SVGs prior to exporting from editing software.
 
 ### Optimizing generated files with SVGO
 
@@ -218,6 +225,7 @@ svgeez is written and maintained by [Jason Garber](https://github.com/jgarber623
 - [Brett Wilkins](https://github.com/bwilkins)
 - [danny](https://github.com/f96q)
 - [Denis Hovart](https://github.com/dhovart)
+- [Desmond Sadler](https://github.com/dezman)
 
 ## License
 
