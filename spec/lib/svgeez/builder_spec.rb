@@ -45,9 +45,7 @@ describe Svgeez::Builder do
 
     context 'when @source contains SVG files' do
       let :file_paths do
-        %w(facebook github heart skull twitter).collect do |i|
-          "./spec/fixtures/icons/#{i}.svg"
-        end
+        %w(facebook github heart skull twitter).map { |i| "./spec/fixtures/icons/#{i}.svg" }
       end
 
       let(:file) { double(File) }

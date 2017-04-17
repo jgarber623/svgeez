@@ -3,9 +3,7 @@ describe Svgeez::Source do
     let(:source) { Svgeez::Source.new }
 
     let :file_paths do
-      %w(facebook github heart skull twitter).collect do |i|
-        File.expand_path("./_svgeez/#{i}.svg")
-      end
+      %w(facebook github heart skull twitter).map { |i| File.expand_path("./_svgeez/#{i}.svg") }
     end
 
     before do
