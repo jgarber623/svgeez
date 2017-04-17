@@ -44,9 +44,17 @@ describe Svgeez::Builder do
     end
 
     context 'when @source contains SVG files' do
+      let :file_paths do
+        %w(facebook github heart skull twitter).collect do |i|
+          "./spec/fixtures/icons/#{i}.svg"
+        end
+      end
+
       let(:file) { double(File) }
 
       before do
+        allow_any_instance_of(Svgeez::Source).to receive(:file_paths).and_return(file_paths)
+
         allow(FileUtils).to receive(:mkdir_p)
         allow(File).to receive(:open).and_yield(file)
         allow(SecureRandom).to receive(:uuid).and_return('1234-abcd-5678-efgh')
