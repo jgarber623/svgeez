@@ -16,7 +16,7 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 - Provides a [CLI](https://en.wikipedia.org/wiki/Command-line_interface) for generating SVG sprite files.
 - Integrates with existing projects (e.g. alongside a Rails application using [Foreman](https://github.com/ddollar/foreman)).
-- Optionally optimizes SVG files with [SVGO](https://github.com/svg/svgo/).
+- Optionally optimizes SVG sprite file with [SVGO](https://github.com/svg/svgo/).
 
 ## Getting Started
 
@@ -66,7 +66,7 @@ The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/
 |---|---|
 |`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./_svgeez`).|
 |`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./svgeez.svg`)|
-|`--with-svgo`|Optimize source SVGs with [SVGO](https://github.com/svg/svgo/) before sprite generation (non-destructive)|
+|`--with-svgo`|Optimize SVG sprite file with [SVGO](https://github.com/svg/svgo/)|
 
 ### The `watch` command
 
@@ -88,13 +88,13 @@ The first section of Jayden Seric's post, [How to optimize SVG](http://jaydenser
 
 ### Optimizing generated files with SVGO
 
-If you have the excellent [SVGO](https://github.com/svg/svgo/) utility installed on your system (and the `svgo` command is available in your PATH), you can use the `--with-svgo` option and optimize source SVGs before generating the sprite file.
+If you have the excellent [SVGO](https://github.com/svg/svgo/) utility installed on your system (and the `svgo` command is available in your PATH), you can use the `--with-svgo` option and optimize the generated sprite file.
 
 ```sh
 $ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
 ```
 
-Optimizing source SVG files with SVGO is done on-the-fly and the original files are left intact. Depending on the number of individual SVG files in the source folder, using the `--with-svgo` option can add considerable time to SVG sprite generation.
+Depending on the number of individual SVG files in the source folder, using the `--with-svgo` option can add considerable time to SVG sprite generation.
 
 ## Working with SVG sprites
 
