@@ -5,6 +5,8 @@ rvm:
   - 2.4.1
 before_install:
   - npm install -g svgo
+after_success:
+  - bundle exec codeclimate-test-reporter
 notifications:
   email: false
   slack: sixtwothree:yATLmjTW15443qR7jbCWr3RO
