@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'listen'
 require 'logger'
+require 'mercenary'
 require 'mkmf'
 require 'securerandom'
 
