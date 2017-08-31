@@ -56,7 +56,6 @@ describe Svgeez::Builder do
         allow(FileUtils).to receive(:mkdir_p)
         allow(File).to receive(:open).and_yield(file)
         allow(SecureRandom).to receive(:uuid).and_return('1234-abcd-5678-efgh')
-        allow(file).to receive(:write)
       end
 
       context 'when @svgo is not specified' do
