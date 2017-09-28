@@ -21,7 +21,9 @@ module Svgeez
 
     def element_contents(content)
       content.scan(/\sid="(.+?)"/).flatten.each do |value|
-        content.gsub!(/\s(id|xlink:href)="(#?#{value})"/m, %( \\1="\\2-#{SecureRandom.uuid}"))
+        uuid = SecureRandom.uuid
+        content.gsub!(/\s(id|xlink:href)="(#?#{value})"/m, %( \\1="\\2-#{uuid}"))
+        content.gsub!(/url\(\#(#{value})\)/, "url(##{value}-#{uuid})")
       end
 
       content

@@ -40,7 +40,7 @@ module Svgeez
       file_contents = SvgElement.new(source, destination).build
       file_contents = Optimizer.new.optimize(file_contents) if @options['svgo']
 
-      file_contents.insert(4, ' style="display: none;"')
+      file_contents.insert(4, ' style="position:absolute; width: 0; height: 0;"')
     end
 
     def source_is_destination?
