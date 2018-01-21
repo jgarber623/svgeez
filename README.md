@@ -2,11 +2,11 @@
 
 **A Ruby gem for automatically generating an SVG sprite from a folder of SVG icons.**
 
-[![Gem Version](https://img.shields.io/gem/v/svgeez.svg?label=gem%20version)](https://rubygems.org/gems/svgeez)
-[![Downloads](https://img.shields.io/gem/dt/svgeez.svg)](https://rubygems.org/gems/svgeez)
-[![Build Status](https://img.shields.io/travis/jgarber623/svgeez/master.svg?label=build%20status)](https://travis-ci.org/jgarber623/svgeez)
-[![Code Climate](https://img.shields.io/codeclimate/github/jgarber623/svgeez.svg)](https://codeclimate.com/github/jgarber623/svgeez)
-[![Coverage](https://img.shields.io/codeclimate/coverage/github/jgarber623/svgeez.svg)](https://codeclimate.com/github/jgarber623/svgeez/coverage)
+[![Gem](https://img.shields.io/gem/v/svgeez.svg?style=for-the-badge)](https://rubygems.org/gems/svgeez)
+[![Downloads](https://img.shields.io/gem/dt/svgeez.svg?style=for-the-badge)](https://rubygems.org/gems/svgeez)
+[![Build](https://img.shields.io/travis/jgarber623/svgeez/master.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/svgeez)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/svgeez.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez)
+[![Coverage](https://img.shields.io/codeclimate/c/jgarber623/svgeez.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez/code)
 
 If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
@@ -20,16 +20,16 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 ## Getting Started
 
-Before installing and using svgeez, you'll want to have Ruby 2.2.7 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). If you're developing on a Mac and using [Homebrew](http://brew.sh/), installing rbenv is [super easy](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x).
+Before installing and using svgeez, you'll want to have Ruby 2.2.9 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). If you're developing on a Mac and using [Homebrew](http://brew.sh/), installing rbenv is [super easy](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x).
 
-svgeez _might_ work with other versions of Ruby, but it's developed in 2.2.7 and automatically tested against 2.3.4 and 2.4.1 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
+svgeez _might_ work with other versions of Ruby, but it's developed in 2.2.9 and automatically tested against 2.3.6, 2.4.3, and 2.5.0 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
 
 ## Installation
 
 If you're using Bundler, add svgeez to your project's Gemfile:
 
 ```rb
-ruby '2.2.7'
+ruby '2.2.9'
 
 source 'https://rubygems.org' do
   gem 'svgeez'
@@ -202,8 +202,8 @@ You want to help make svgeez better? Hell yeah! I like your enthusiasm. For more
 
 If diving into Ruby isn't your thing, but you'd still like to support svgeez, consider making a donation! Any amount—large or small—is greatly appreciated. As a token of my gratitude, I'll add your name to the [Acknowledgments](#acknowledgments) below.
 
-[![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg)](https://cash.me/$jgarber)
-[![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg)](https://www.paypal.me/jgarber)
+[![Donate via Square Cash](https://img.shields.io/badge/square%20cash-$jgarber-28c101.svg?style=for-the-badge)](https://cash.me/$jgarber)
+[![Donate via Paypal](https://img.shields.io/badge/paypal-jgarber-009cde.svg?style=for-the-badge)](https://www.paypal.me/jgarber)
 
 ## Acknowledgments
 
