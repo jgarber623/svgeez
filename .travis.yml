@@ -1,10 +1,13 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.2.7
-  - 2.3.4
-  - 2.4.1
+  - 2.2.9
+  - 2.3.6
+  - 2.4.3
+  - 2.5.0
 before_install:
+  - gem update --system
+  - gem update bundler
   - nvm install node
   - npm install -g svgo
 before_script:
@@ -15,4 +18,6 @@ after_success:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
   email: false
-  slack: sixtwothree:yATLmjTW15443qR7jbCWr3RO
+  slack:
+    rooms:
+      secure: PGS4rdJ+83rywBT5qj50VjwiEr4hO7QYV5cH8X50SnKoGuYIIpwF0fpInNjfFOMrAtg8vn8LIRVlfOGpSY/QZ5edMLX/dPkyhQcQrdekD1vQxwEVV6qZpRBQmnpVLX0hrkg9aeSA+qwUOMqbMfQOptLrLjEepBAG3Hmub9zvNz6droPxSnlYmD4kB3ZaFTVBnVIXglrYQtJFWLwEgn9AfVUOIVMkzY1IvxlNLajwe6I1qqs2PkpVNsT3kM5TWsoSyeMS4KH1r7a5kx+tN+YdZnqTNs8rK8pVGJs0Tgpq6J3dfYnJVLCclO3NI3fUpc8AXFB0lrn+YCL8BKTIgfV7Za10KKkWtlXLCD53b1jwSWSqfANNg+pJeZEjVjziq/iCbr0+QbyZ1P+h13edimUKsZwLW9yYoG5J3W5Cvlk7gxiICDcDUKEEQqbn1kWpq+pWa0MbT1azs2NtWemQDbp8bCkHiNicev/xWrgIKAipV/fIJYQh9okrPR3RleTDOdSeR1uWsKzAnRWpACrG4xT8igmw5bBefmbzSyNF9LqQmR1mMGxgaNNbYVyoa+PHiJmHuD5fUxS9CoN8VGRQvo3bI/xASO5V49GZNJ8VyOM4ifZfqRddnWrSFht1SsqfHjF92209oY0z3uJkdFkjREQbvMlctBzRencHSmieL6jF2r4=
