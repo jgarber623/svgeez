@@ -1,12 +1,10 @@
-# coding: utf-8
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'svgeez/version'
 
 Gem::Specification.new do |spec|
-  spec.required_ruby_version = '>= 2.2.7'
+  spec.required_ruby_version = ['>= 2.2.9', '< 2.6']
 
   spec.name          = 'svgeez'
   spec.version       = Svgeez::VERSION
@@ -23,12 +21,12 @@ Gem::Specification.new do |spec|
   spec.executables   = ['svgeez']
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.10'
-  spec.add_development_dependency 'rake', '~> 12.0'
-  spec.add_development_dependency 'rspec', '~> 3.5'
-  spec.add_development_dependency 'rubocop', '~> 0.48.1'
-  spec.add_development_dependency 'simplecov-console', '~> 0.4.1'
+  spec.add_development_dependency 'bundler', '~> 1.16', '>= 1.16.1'
+  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'rspec', '~> 3.7'
+  spec.add_development_dependency 'rubocop', '~> 0.52.1'
+  spec.add_development_dependency 'simplecov-console', '~> 0.4.2'
 
-  spec.add_runtime_dependency 'listen', '~> 3.0'
-  spec.add_runtime_dependency 'mercenary', '~> 0.3'
+  spec.add_runtime_dependency 'listen', '~> 3.1', '>= 3.1.5'
+  spec.add_runtime_dependency 'mercenary', '~> 0.3.6'
 end
