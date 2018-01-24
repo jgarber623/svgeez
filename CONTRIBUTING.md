@@ -11,9 +11,9 @@ I definitely appreciate your interest in (and help improving) svgeez. Thanks!
 
 ## Installation
 
-svgeez is written in [Ruby](https://www.ruby-lang.org/en/) (version 2.2.9) and development dependencies are managed using the [Bundler](http://bundler.io/) gem. [Travis CI builds](https://travis-ci.org/jgarber623/svgeez) use Ruby 2.2.9, 2.3.6, 2.4.3, and 2.5.0.
+svgeez is written in [Ruby](https://www.ruby-lang.org/en/) (version 2.5.0) and development dependencies are managed using the [Bundler](http://bundler.io) gem. [Travis CI builds](https://travis-ci.org/jgarber623/svgeez) use Ruby 2.2.9, 2.3.6, 2.4.3, and 2.5.0.
 
-I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recommend you do the same or use a similar Ruby version manager ([chruby](https://github.com/postmodern/chruby/) or [RVM](https://rvm.io/) come to mind). Once you've installed Ruby 2.2.9 using your method of choice, install the project's gems by running:
+I manage Ruby versions with [rbenv](https://github.com/rbenv/rbenv). I'd recommend you do the same or use a similar Ruby version manager ([chruby](https://github.com/postmodern/chruby) or [RVM](https://rvm.io) come to mind). Once you've installed Ruby 2.5.0 using your method of choice, install the project's gems by running:
 
 ```sh
 bundle install
@@ -21,7 +21,7 @@ bundle install
 
 …from the root of the project.
 
-In order for the test suite to run properly, [SVGO](https://github.com/svg/svgo/) must be installed (and the `svgo` command must be available in your PATH). This is most easily achieved by installing [Node.js](https://nodejs.org/) and running:
+In order for the test suite to run properly, [SVGO](https://github.com/svg/svgo) must be installed (and the `svgo` command must be available in your PATH). This is most easily achieved by installing [Node.js](https://nodejs.org) and running:
 
 ```sh
 npm install -g svgo
@@ -50,7 +50,7 @@ Code styles are like opinions: Everyone's got one and yours is better than mine.
 - Prefer single quotes over double quotes unless interpolating.
 - Follow the conventions you see in the existing source code as best as you can.
 
-svgeez's formatting guidelines are defined in the `.editorconfig` file which uses the [EditorConfig](http://editorconfig.org/) syntax. There are [a number of great plugins for a variety of editors](http://editorconfig.org/#download) that utilize the settings in the `.editorconfig` file. EditorConfig takes the hassle out of syntax-specific formatting.
+svgeez's formatting guidelines are defined in the `.editorconfig` file which uses the [EditorConfig](http://editorconfig.org) syntax. There are [a number of great plugins for a variety of editors](http://editorconfig.org/#download) that utilize the settings in the `.editorconfig` file. EditorConfig takes the hassle out of syntax-specific formatting.
 
 Additionally, [Rubocop](https://github.com/bbatsov/rubocop) can be used to help identify possible trouble areas in your code. Run `bundle exec rake rubocop` to generate Rubocop's static code analysis report.
 

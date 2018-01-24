@@ -16,20 +16,20 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 - Provides a [CLI](https://en.wikipedia.org/wiki/Command-line_interface) for generating SVG sprite files.
 - Integrates with existing projects (e.g. alongside a Rails application using [Foreman](https://github.com/ddollar/foreman)).
-- Optionally optimizes SVG sprite file with [SVGO](https://github.com/svg/svgo/).
+- Optionally optimizes SVG sprite file with [SVGO](https://github.com/svg/svgo).
 
 ## Getting Started
 
-Before installing and using svgeez, you'll want to have Ruby 2.2.9 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). If you're developing on a Mac and using [Homebrew](http://brew.sh/), installing rbenv is [super easy](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x).
+Before installing and using svgeez, you'll want to have Ruby 2.2.9 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). If you're developing on a Mac and using [Homebrew](http://brew.sh), installing rbenv is [super easy](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x).
 
-svgeez _might_ work with other versions of Ruby, but it's developed in 2.2.9 and automatically tested against 2.3.6, 2.4.3, and 2.5.0 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
+svgeez _might_ work with other versions of Ruby, but it's developed in 2.5.0 and automatically tested against 2.2.9, 2.3.6, 2.4.3, and 2.5.0 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
 
 ## Installation
 
 If you're using Bundler, add svgeez to your project's Gemfile:
 
 ```rb
-ruby '2.2.9'
+ruby '2.5.0'
 
 source 'https://rubygems.org' do
   gem 'svgeez'
@@ -66,7 +66,7 @@ The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/
 |---|---|
 |`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./_svgeez`).|
 |`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./svgeez.svg`)|
-|`--with-svgo`|Optimize SVG sprite file with [SVGO](https://github.com/svg/svgo/)|
+|`--with-svgo`|Optimize SVG sprite file with [SVGO](https://github.com/svg/svgo)|
 
 ### The `watch` command
 
@@ -88,7 +88,7 @@ The first section of Jayden Seric's post, [How to optimize SVG](http://jaydenser
 
 ### Optimizing generated files with SVGO
 
-If you have the excellent [SVGO](https://github.com/svg/svgo/) utility installed on your system (and the `svgo` command is available in your PATH), you can use the `--with-svgo` option and optimize the generated sprite file.
+If you have the excellent [SVGO](https://github.com/svg/svgo) utility installed on your system (and the `svgo` command is available in your PATH), you can use the `--with-svgo` option and optimize the generated sprite file.
 
 ```sh
 $ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
@@ -214,7 +214,7 @@ svgeez benefited greatly from the hard work done by the folks working on the fol
 - [Mercenary](https://github.com/jekyll/mercenary)
 - [Listen](https://github.com/guard/listen)
 
-Additionally, Chris Coyier's [CSS Tricks](https://css-tricks.com/) posts linked above got me interested in SVG sprites.
+Additionally, Chris Coyier's [CSS Tricks](https://css-tricks.com) posts linked above got me interested in SVG sprites.
 
 Lastly, the sample icons in `spec/fixtures/icons` are from [Brent Jackson](https://github.com/jxnblk)'s [Geomicons Open](https://github.com/jxnblk/geomicons-open) icon set.
 
