@@ -35,8 +35,8 @@ Contributing to svgeez is pretty straightforward:
 1. Install development dependencies as outlined [above](#installation).
 1. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
 1. _Write some code!_
-1. Build (`bundle exec rake build`) and install (`bundle exec rake install`) your updated code.
-1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `bundle exec rake`.
+1. Build (`bin/rake build`) and install (`bin/rake install`) your updated code.
+1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `bin/rake`.
 1. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
 1. Push the branch to your fork of svgeez: `git push origin your-descriptive-branch-name`.
 1. Create a new Pull Request and I'll give it a look!
@@ -52,6 +52,6 @@ Code styles are like opinions: Everyone's got one and yours is better than mine.
 
 svgeez's formatting guidelines are defined in the `.editorconfig` file which uses the [EditorConfig](http://editorconfig.org) syntax. There are [a number of great plugins for a variety of editors](http://editorconfig.org/#download) that utilize the settings in the `.editorconfig` file. EditorConfig takes the hassle out of syntax-specific formatting.
 
-Additionally, [Rubocop](https://github.com/bbatsov/rubocop) can be used to help identify possible trouble areas in your code. Run `bundle exec rake rubocop` to generate Rubocop's static code analysis report.
+Additionally, [Rubocop](https://github.com/bbatsov/rubocop) can be used to help identify possible trouble areas in your code. Run `bin/rubocop` to generate Rubocop's static code analysis report.
 
 Your bug fix or feature addition won't be rejected if it runs afoul of any (or all) of these guidelines, but following the guidelines will definitely make everyone's lives a little easier.
