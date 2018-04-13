@@ -1,7 +1,7 @@
 describe Svgeez::Destination do
   describe '#file_id' do
     context 'when @destination is not specified' do
-      let(:destination) { Svgeez::Destination.new }
+      let(:destination) { described_class.new }
 
       it 'returns the default file ID' do
         expect(destination.file_id).to eq('svgeez')
@@ -10,7 +10,7 @@ describe Svgeez::Destination do
 
     context 'when @destination is specified' do
       let :destination do
-        Svgeez::Destination.new(
+        described_class.new(
           'destination' => './foo.svg'
         )
       end
@@ -23,7 +23,7 @@ describe Svgeez::Destination do
 
   describe '#file_name' do
     context 'when @destination is not specified' do
-      let(:destination) { Svgeez::Destination.new }
+      let(:destination) { described_class.new }
 
       it 'returns the default file name' do
         expect(destination.file_name).to eq('svgeez.svg')
@@ -33,7 +33,7 @@ describe Svgeez::Destination do
     context 'when @destination is specified' do
       context 'when @destination is a folder path' do
         let :destination do
-          Svgeez::Destination.new(
+          described_class.new(
             'destination' => './foo'
           )
         end
@@ -45,7 +45,7 @@ describe Svgeez::Destination do
 
       context 'when @destination is a file name' do
         let :destination do
-          Svgeez::Destination.new(
+          described_class.new(
             'destination' => './foo.svg'
           )
         end
@@ -59,7 +59,7 @@ describe Svgeez::Destination do
 
   describe '#file_path' do
     context 'when @destination is not specified' do
-      let(:destination) { Svgeez::Destination.new }
+      let(:destination) { described_class.new }
 
       it 'returns the default file path' do
         expect(destination.file_path).to eq(File.expand_path('./svgeez.svg'))
@@ -69,7 +69,7 @@ describe Svgeez::Destination do
     context 'when @destination is specified' do
       context 'when @destination is a folder path' do
         let :destination do
-          Svgeez::Destination.new(
+          described_class.new(
             'destination' => './foo'
           )
         end
@@ -81,7 +81,7 @@ describe Svgeez::Destination do
 
       context 'when @destination is a file name' do
         let :destination do
-          Svgeez::Destination.new(
+          described_class.new(
             'destination' => './foo/bar.svg'
           )
         end
@@ -95,7 +95,7 @@ describe Svgeez::Destination do
 
   describe '#folder_path' do
     context 'when @destination is not specified' do
-      let(:destination) { Svgeez::Destination.new }
+      let(:destination) { described_class.new }
 
       it 'returns the default folder path' do
         expect(destination.folder_path).to eq(File.expand_path('.'))
@@ -105,7 +105,7 @@ describe Svgeez::Destination do
     context 'when @destination is specified' do
       context 'when @destination is a folder path' do
         let :destination do
-          Svgeez::Destination.new(
+          described_class.new(
             'destination' => './foo'
           )
         end
@@ -117,7 +117,7 @@ describe Svgeez::Destination do
 
       context 'when @destination is a file name' do
         let :destination do
-          Svgeez::Destination.new(
+          described_class.new(
             'destination' => './foo/bar.svg'
           )
         end

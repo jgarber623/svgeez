@@ -8,7 +8,7 @@ describe Svgeez::Builder do
 
     context 'when @source and @destination are the same' do
       let :builder do
-        Svgeez::Builder.new(
+        described_class.new(
           'source' => './foo',
           'destination' => './foo'
         )
@@ -22,7 +22,7 @@ describe Svgeez::Builder do
 
     context 'when @destination is nested within @source' do
       let :builder do
-        Svgeez::Builder.new(
+        described_class.new(
           'source' => './foo',
           'destination' => './foo/bar.svg'
         )
@@ -35,7 +35,7 @@ describe Svgeez::Builder do
     end
 
     context 'when @source contains no SVG files' do
-      let(:builder) { Svgeez::Builder.new }
+      let(:builder) { described_class.new }
 
       it 'logs a warning' do
         expect(logger).to receive(:warn).with(warning_message)
@@ -45,10 +45,10 @@ describe Svgeez::Builder do
 
     context 'when @source contains SVG files' do
       let :file_paths do
-        %w(facebook github heart skull twitter).map { |i| "./spec/fixtures/icons/#{i}.svg" }
+        %w[facebook github heart skull twitter].map { |i| "./spec/fixtures/icons/#{i}.svg" }
       end
 
-      let(:file) { double(File) }
+      let(:file) { class_double(File) }
 
       before do
         allow_any_instance_of(Svgeez::Source).to receive(:file_paths).and_return(file_paths)
@@ -60,7 +60,7 @@ describe Svgeez::Builder do
 
       context 'when @svgo is not specified' do
         let :builder do
-          Svgeez::Builder.new(
+          described_class.new(
             'source' => './spec/fixtures/icons',
             'destination' => './spec/fixtures/icons.svg'
           )
@@ -76,7 +76,7 @@ describe Svgeez::Builder do
 
       context 'when @svgo is specified' do
         let :builder do
-          Svgeez::Builder.new(
+          described_class.new(
             'source' => './spec/fixtures/icons',
             'destination' => './spec/fixtures/icons-svgo.svg',
             'svgo' => true
@@ -94,7 +94,7 @@ describe Svgeez::Builder do
   end
 
   describe '#destination' do
-    let(:builder) { Svgeez::Builder.new }
+    let(:builder) { described_class.new }
 
     it 'returns an instance of Svgeez::Destination' do
       expect(builder.destination).to be_instance_of(Svgeez::Destination)
@@ -102,7 +102,7 @@ describe Svgeez::Builder do
   end
 
   describe '#source' do
-    let(:builder) { Svgeez::Builder.new }
+    let(:builder) { described_class.new }
 
     it 'returns an instance of Svgeez::Source' do
       expect(builder.source).to be_instance_of(Svgeez::Source)

@@ -9,10 +9,10 @@ module Svgeez
       super(base)
     end
 
-    def self.add_build_options(c)
-      c.option 'source', '-s', '--source [FOLDER]', 'Source folder (defaults to ./_svgeez)'
-      c.option 'destination', '-d', '--destination [OUTPUT]', 'Destination file or folder (defaults to ./svgeez.svg)'
-      c.option 'svgo', '--with-svgo', 'Optimize source SVGs with SVGO before sprite generation (non-destructive)'
+    def self.add_build_options(command)
+      command.option 'source', '-s', '--source [FOLDER]', 'Source folder (defaults to ./_svgeez)'
+      command.option 'destination', '-d', '--destination [OUTPUT]', 'Destination file or folder (defaults to ./svgeez.svg)'
+      command.option 'svgo', '--with-svgo', 'Optimize source SVGs with SVGO before sprite generation (non-destructive)'
     end
   end
 end

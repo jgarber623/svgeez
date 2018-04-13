@@ -1,14 +1,14 @@
 module Svgeez
   module Commands
     class Build < Command
-      def self.init_with_program(p)
-        p.command(:build) do |c|
-          c.description 'Builds an SVG sprite from a folder of SVG icons'
-          c.syntax 'build [options]'
+      def self.init_with_program(program)
+        program.command(:build) do |command|
+          command.description 'Builds an SVG sprite from a folder of SVG icons'
+          command.syntax 'build [options]'
 
-          add_build_options(c)
+          add_build_options(command)
 
-          c.action do |_, options|
+          command.action do |_, options|
             Build.process(options)
           end
         end

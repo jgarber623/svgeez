@@ -1,9 +1,9 @@
 describe Svgeez::Source do
   describe '#file_paths' do
-    let(:source) { Svgeez::Source.new }
+    let(:source) { described_class.new }
 
     let :file_paths do
-      %w(facebook github heart skull twitter).map { |i| File.expand_path("./_svgeez/#{i}.svg") }
+      %w[facebook github heart skull twitter].map { |i| File.expand_path("./_svgeez/#{i}.svg") }
     end
 
     before do
@@ -17,7 +17,7 @@ describe Svgeez::Source do
 
   describe '#folder_path' do
     context 'when @source is not specified' do
-      let(:source) { Svgeez::Source.new }
+      let(:source) { described_class.new }
 
       it 'returns the default folder path' do
         expect(source.folder_path).to eq(File.expand_path('./_svgeez'))
@@ -26,7 +26,7 @@ describe Svgeez::Source do
 
     context 'when @source is specified' do
       let :source do
-        Svgeez::Source.new(
+        described_class.new(
           'source' => './foo'
         )
       end

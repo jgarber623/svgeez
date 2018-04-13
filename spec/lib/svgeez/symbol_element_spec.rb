@@ -5,9 +5,9 @@ describe Svgeez::SymbolElement do
 
   let(:file_id) { 'foo' }
 
-  let(:symbol_element) { Svgeez::SymbolElement.new(file_path, file_id) }
+  let(:symbol_element) { described_class.new(file_path, file_id) }
 
-  context '#build' do
+  describe '#build' do
     before do
       allow(SecureRandom).to receive(:uuid).and_return(uuid)
     end

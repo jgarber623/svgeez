@@ -1,8 +1,18 @@
 require:
   - rubocop-rspec
 
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
 Metrics/LineLength:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+RSpec/NestedGroups:
+  Max: 4
 
 Style/Documentation:
   Enabled: false

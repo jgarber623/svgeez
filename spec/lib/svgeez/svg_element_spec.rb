@@ -3,9 +3,9 @@ describe Svgeez::SvgElement do
 
   let(:destination) { Svgeez::Destination.new }
 
-  let(:svg_element) { Svgeez::SvgElement.new(source, destination) }
+  let(:svg_element) { described_class.new(source, destination) }
 
-  context '#build' do
+  describe '#build' do
     before do
       allow_any_instance_of(Svgeez::SymbolElement).to receive(:build).and_return('<foo/>')
 

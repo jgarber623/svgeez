@@ -1,14 +1,14 @@
 module Svgeez
   module Commands
     class Watch < Command
-      def self.init_with_program(p)
-        p.command(:watch) do |c|
-          c.description 'Watches a folder of SVG icons for changes'
-          c.syntax 'watch [options]'
+      def self.init_with_program(program)
+        program.command(:watch) do |command|
+          command.description 'Watches a folder of SVG icons for changes'
+          command.syntax 'watch [options]'
 
-          add_build_options(c)
+          add_build_options(command)
 
-          c.action do |_, options|
+          command.action do |_, options|
             Build.process(options)
             Watch.process(options)
           end
