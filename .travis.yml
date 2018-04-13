@@ -15,8 +15,8 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-  - bin/rake
-  - bin/rubocop
+  - bundle exec rake
+  - bundle exec rubocop
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
