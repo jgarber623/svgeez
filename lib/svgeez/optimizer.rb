@@ -8,7 +8,7 @@ module Svgeez
       return Svgeez.logger.warn(SVGO_NOT_INSTALLED) unless installed?
       return Svgeez.logger.warn(SVGO_MINIMUM_VERSION_MESSAGE) unless supported?
 
-      `cat <<EOF | svgo --disable=\{cleanupIDs,removeViewBox\} -i - -o -\n#{file_contents}\nEOF`
+      `cat <<EOF | svgo --disable=cleanupIDs --disable=removeViewBox -i - -o -\n#{file_contents}\nEOF`
     end
 
     private
