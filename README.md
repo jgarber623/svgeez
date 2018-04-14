@@ -20,29 +20,31 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 ## Getting Started
 
-Before installing and using svgeez, you'll want to have Ruby 2.2.9 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). If you're developing on a Mac and using [Homebrew](http://brew.sh), installing rbenv is [super easy](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x).
+Before installing and using svgeez, you'll want to have Ruby 2.2.10 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv).
 
 svgeez _might_ work with other versions of Ruby, but it's developed in 2.5.1 and automatically tested against 2.2.10, 2.3.7, 2.4.4, and 2.5.1 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
 
 ## Installation
 
-If you're using Bundler, add svgeez to your project's Gemfile:
+If you're using [Bundler](http://bundler.io), add svgeez to your project's Gemfile:
 
 ```rb
-ruby '2.5.1'
+source 'https://rubygems.org'
 
-source 'https://rubygems.org' do
-  gem 'svgeez'
-end
+gem 'svgeez', '~> 1.1'
 ```
 
 …and hop over to your command prompt and run…
 
-`$ bundle`
+```sh
+$ bundle install
+```
 
 You may also install svgeez directly by issuing the following command:
 
-`$ gem install svgeez`
+```sh
+$ gem install svgeez
+```
 
 ## Usage
 
@@ -88,7 +90,7 @@ The first section of Jayden Seric's post, [How to optimize SVG](http://jaydenser
 
 ### Optimizing generated files with SVGO
 
-If you have the excellent [SVGO](https://github.com/svg/svgo) utility installed on your system (and the `svgo` command is available in your PATH), you can use the `--with-svgo` option and optimize the generated sprite file.
+If you have the excellent [SVGO](https://github.com/svg/svgo) utility installed on your system (and the `svgo` command is available in your `PATH`), you can use the `--with-svgo` option and optimize the generated sprite file.
 
 ```sh
 $ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
@@ -104,7 +106,7 @@ For example, a file named `menu.svg` in `~/Sites/sixtwothree.org/images/icons` w
 
 ```svg
 <symbol id="icons-menu" viewBox="0 0 32 32">
-    <path d="…"/>
+  <path d="…"/>
 </symbol>
 ```
 
@@ -116,21 +118,21 @@ To use an svgeez-generated SVG sprite file, first include the file's contents at
 
 In a Rails 4.1.x or lower application:
 
-```erb
+```html
 <body>
-    <!-- Your page’s awesome content goes here! -->
+  <!-- Your page’s awesome content goes here! -->
 
-    <%= raw Rails.application.assets.find_asset('icons.svg') %>
+  <%= raw Rails.application.assets.find_asset('icons.svg') %>
 </body>
 ```
 
 In a Rails 4.2.x or 5 application:
 
-```erb
+```html
 <body>
-    <!-- Your page’s awesome content goes here! -->
+  <!-- Your page’s awesome content goes here! -->
 
-    <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
+  <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
 </body>
 ```
 
@@ -138,9 +140,9 @@ Or, with PHP:
 
 ```html
 <body>
-    <!-- Your page’s awesome content goes here! -->
+  <!-- Your page’s awesome content goes here! -->
 
-    <?php include_once('path/to/icons.svg'); ?>
+  <?php include_once('path/to/icons.svg'); ?>
 </body>
 ```
 
@@ -152,27 +154,27 @@ Next, wherever you want to include an icon in your user interface, use HTML simi
 
 A more complete example from a Rails 4.1.x or lower application's layout file:
 
-```erb
+```html
 <body>
-    <button>
-        <svg><use xlink:href="#icons-menu"></svg>
-        Menu
-    </button>
+  <button>
+    <svg><use xlink:href="#icons-menu"></svg>
+    Menu
+  </button>
 
-    <%= raw Rails.application.assets.find_asset('icons.svg') %>
+  <%= raw Rails.application.assets.find_asset('icons.svg') %>
 </body>
 ```
 
 A more complete example from a Rails 4.2.x or 5 application's layout file:
 
-```erb
+```html
 <body>
-    <button>
-        <svg><use xlink:href="#icons-menu"></svg>
-        Menu
-    </button>
+  <button>
+    <svg><use xlink:href="#icons-menu"></svg>
+    Menu
+  </button>
 
-    <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
+  <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
 </body>
 ```
 
@@ -184,13 +186,13 @@ For smaller icon sets, this may be an acceptable balance of user and developer n
 
 Icons embedded with the inline `<use>` technique will inherit their fill color from the nearest parent's `color` value, but this can be overriden with CSS:
 
-```css
+```scss
 button {
-    color: #333;
+  color: #333;
 }
 
 button svg {
-    fill: #c00; // Absent this declaration, the icon’s fill color would be #333
+  fill: #c00; // Absent this declaration, the icon’s fill color would be #333
 }
 ```
 
@@ -218,7 +220,7 @@ Additionally, Chris Coyier's [CSS Tricks](https://css-tricks.com) posts linked a
 
 Lastly, the sample icons in `spec/fixtures/icons` are from [Brent Jackson](https://github.com/jxnblk)'s [Geomicons Open](https://github.com/jxnblk/geomicons-open) icon set.
 
-svgeez is written and maintained by [Jason Garber](https://github.com/jgarber623).
+svgeez is written and maintained by [Jason Garber](https://sixtwothree.org).
 
 ### Additional Contributors
 
@@ -229,4 +231,4 @@ svgeez is written and maintained by [Jason Garber](https://github.com/jgarber623
 
 ## License
 
-svgeez is freely available under the [MIT License](http://opensource.org/licenses/MIT). Use it, learn from it, fork it, improve it, change it, tailor it to your needs.
+svgeez is freely available under the [MIT License](https://opensource.org/licenses/MIT). Use it, learn from it, fork it, improve it, change it, tailor it to your needs.

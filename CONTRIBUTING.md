@@ -21,7 +21,7 @@ bundle install
 
 …from the root of the project.
 
-In order for the test suite to run properly, [SVGO](https://github.com/svg/svgo) must be installed (and the `svgo` command must be available in your PATH). This is most easily achieved by installing [Node.js](https://nodejs.org) and running:
+In order for the test suite to run properly, [SVGO](https://github.com/svg/svgo) must be installed (and the `svgo` command must be available in your `PATH`). This is most easily achieved by installing [Node.js](https://nodejs.org) and running:
 
 ```sh
 npm install -g svgo
