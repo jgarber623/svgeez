@@ -5,16 +5,18 @@ $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'mercenary'
 require 'svgeez'
 
-Mercenary.program(:svgeez) do |p|
-  p.version Svgeez::VERSION
-  p.description 'Generate an SVG sprite from a folder of SVG icons.'
-  p.syntax 'svgeez <subcommand> [options]'
+Mercenary.program(:svgeez) do |program|
+  program.version Svgeez::VERSION
+  program.description 'Generate an SVG sprite from a folder of SVG icons.'
+  program.syntax 'svgeez <subcommand> [options]'
 
-  Svgeez::Command.subclasses.each { |c| c.init_with_program(p) }
+  Svgeez::Command.subclasses.each do |command|
+    command.init_with_program(program)
+  end
 
-  p.action do |args, _|
+  program.action do |args, _|
     if args.empty?
-      puts p
+      puts program
       abort
     end
   end
