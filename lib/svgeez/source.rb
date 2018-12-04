@@ -2,16 +2,14 @@ module Svgeez
   class Source
     DEFAULT_INPUT_FOLDER_PATH = './_svgeez'.freeze
 
+    attr_reader :folder_path
+
     def initialize(options = {})
-      @options = options
+      @folder_path = File.expand_path(options.fetch('source', DEFAULT_INPUT_FOLDER_PATH))
     end
 
     def file_paths
       Dir.glob(file_paths_pattern)
-    end
-
-    def folder_path
-      @folder_path ||= File.expand_path(@options.fetch('source', DEFAULT_INPUT_FOLDER_PATH))
     end
 
     private

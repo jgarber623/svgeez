@@ -3,8 +3,12 @@ module Svgeez
     SOURCE_IS_DESTINATION_MESSAGE = "Setting `source` and `destination` to the same path isn't allowed!".freeze
     NO_SVGS_IN_SOURCE_MESSAGE = 'No SVGs were found in `source` folder.'.freeze
 
+    attr_reader :source, :destination
+
     def initialize(options = {})
-      @options = options
+      @source = Source.new(options)
+      @destination = Destination.new(options)
+      @svgo = options.fetch('svgo', false)
     end
 
     # rubocop:disable Metrics/AbcSize
@@ -26,19 +30,11 @@ module Svgeez
     end
     # rubocop:enable Metrics/AbcSize
 
-    def destination
-      @destination ||= Destination.new(@options)
-    end
-
-    def source
-      @source ||= Source.new(@options)
-    end
-
     private
 
     def destination_file_contents
       file_contents = SvgElement.new(source, destination).build
-      file_contents = Optimizer.new.optimize(file_contents) if @options['svgo']
+      file_contents = Optimizer.new.optimize(file_contents) if @svgo
 
       file_contents.insert(4, ' style="display: none;"')
     end
