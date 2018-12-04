@@ -1,6 +1,6 @@
 module Svgeez
   class Optimizer
-    SVGO_MINIMUM_VERSION = '1.0.4'.freeze
+    SVGO_MINIMUM_VERSION = '1.1.1'.freeze
     SVGO_MINIMUM_VERSION_MESSAGE = "svgeez relies on SVGO #{SVGO_MINIMUM_VERSION} or newer. Continuing with standard sprite generation...".freeze
     SVGO_NOT_INSTALLED = 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...'.freeze
 

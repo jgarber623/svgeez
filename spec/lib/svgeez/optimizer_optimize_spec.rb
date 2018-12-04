@@ -18,7 +18,7 @@ describe Svgeez::Optimizer, '#optimize' do
   context 'when SVGO executable is found' do
     context 'when SVGO version is not supported' do
       let(:optimizer) { described_class.new }
-      let(:warning_message) { 'svgeez relies on SVGO 1.0.4 or newer. Continuing with standard sprite generation...' }
+      let(:warning_message) { 'svgeez relies on SVGO 1.1.1 or newer. Continuing with standard sprite generation...' }
 
       before do
         allow_any_instance_of(described_class).to receive(:supported?).and_return(false)
