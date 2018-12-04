@@ -8,6 +8,12 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Enabled: false
 
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
 RSpec/MultipleExpectations:
   Max: 2
 
