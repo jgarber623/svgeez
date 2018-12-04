@@ -11,6 +11,6 @@ describe Svgeez::SvgElement, '#build' do
   end
 
   it 'returns a string' do
-    expect(svg_element.build).to eq(%(<svg id="foo" version="1.1" xmlns="http://www.w3.org/2000/svg"><foo/></svg>))
+    expect(svg_element.build).to eq(%(<svg id="foo" xmlns="http://www.w3.org/2000/svg"><foo/></svg>))
   end
 end

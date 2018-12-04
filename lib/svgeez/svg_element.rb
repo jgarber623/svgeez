@@ -6,7 +6,7 @@ module Svgeez
     end
 
     def build
-      %(<svg id="#{@destination.file_id}" version="1.1" xmlns="http://www.w3.org/2000/svg">#{symbol_elements.join}</svg>)
+      %(<svg id="#{@destination.file_id}" xmlns="http://www.w3.org/2000/svg">#{symbol_elements.join}</svg>)
     end
 
     private
