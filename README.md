@@ -31,7 +31,7 @@ If you're using [Bundler](http://bundler.io), add svgeez to your project's Gemfi
 ```rb
 source 'https://rubygems.org'
 
-gem 'svgeez', '~> 1.1'
+gem 'svgeez', '~> 1.0', '>= 1.0.3'
 ```
 
 …and hop over to your command prompt and run…
