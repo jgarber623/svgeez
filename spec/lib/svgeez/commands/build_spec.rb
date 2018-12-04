@@ -1,7 +1,6 @@
 describe Svgeez::Commands::Build do
   describe '.init_with_program' do
     let(:program) { Mercenary::Program.new(:svgeez) }
-
     let(:command) { described_class.init_with_program(program) }
 
     it 'sets a description' do
