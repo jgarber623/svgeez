@@ -21,7 +21,7 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 ## Getting Started
 
-Before installing and using svgeez, you'll want to have Ruby 2.4 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). svgeez is developed using Ruby 2.4.5 and automatically tested against 2.4.5 and 2.5.3 by [Travis CI](https://travis-ci.org/jgarber623/svgeez).
+Before installing and using svgeez, you'll want to have Ruby 2.4 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). svgeez is developed using Ruby 2.4.5 and is additionally tested against Ruby 2.5.3 and 2.6.0 using [Travis CI](https://travis-ci.org/jgarber623/svgeez).
 
 ## Installation
 
