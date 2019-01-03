@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1 / 2019-01-03
+
+- Expand supported Ruby versions to include 2.6 ([0facfd0](https://github.com/jgarber623/svgeez/commit/0facfd0)).
+
 ## 2.0.0 / 2018-12-04
 
 - Refactor classes to use `attr_reader`s ([c62780f](https://github.com/jgarber623/svgeez/commit/c62780f))
