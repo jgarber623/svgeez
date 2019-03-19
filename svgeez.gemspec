@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
   spec.executables   = ['svgeez']
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec', '~> 3.8'
   spec.add_development_dependency 'rubocop', '~> 0.66.0'

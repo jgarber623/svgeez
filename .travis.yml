@@ -1,12 +1,13 @@
 language: ruby
 rvm:
   - 2.4.5
-  - 2.5.3
-  - 2.6.0
+  - 2.5.4
+  - 2.6.2
 cache:
   - bundler
 before_install:
-  - gem install bundler -v '~> 1.17'
+  - gem update --system
+  - gem install bundler
   - nvm install node
   - npm install -g svgo
 before_script:
