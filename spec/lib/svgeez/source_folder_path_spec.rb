@@ -8,7 +8,7 @@ describe Svgeez::Source, '#folder_path' do
   end
 
   context 'when @source is specified' do
-    let :source do
+    let(:source) do
       described_class.new(
         'source' => './foo'
       )

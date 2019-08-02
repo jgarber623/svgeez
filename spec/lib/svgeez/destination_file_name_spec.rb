@@ -9,7 +9,7 @@ describe Svgeez::Destination, '#file_name' do
 
   context 'when @destination is specified' do
     context 'when @destination is a folder path' do
-      let :destination do
+      let(:destination) do
         described_class.new(
           'destination' => './foo'
         )
@@ -21,7 +21,7 @@ describe Svgeez::Destination, '#file_name' do
     end
 
     context 'when @destination is a file name' do
-      let :destination do
+      let(:destination) do
         described_class.new(
           'destination' => './foo.svg'
         )

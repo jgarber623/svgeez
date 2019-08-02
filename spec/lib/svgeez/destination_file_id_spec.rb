@@ -8,7 +8,7 @@ describe Svgeez::Destination, '#file_id' do
   end
 
   context 'when @destination is specified' do
-    let :destination do
+    let(:destination) do
       described_class.new(
         'destination' => './foo.svg'
       )

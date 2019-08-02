@@ -1,7 +1,7 @@
 describe Svgeez::Source, '#file_paths' do
   let(:source) { described_class.new }
 
-  let :file_paths do
+  let(:file_paths) do
     %w[facebook github heart skull twitter].map { |i| File.expand_path("./_svgeez/#{i}.svg") }
   end
 
