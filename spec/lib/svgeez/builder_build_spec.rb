@@ -82,7 +82,7 @@ describe Svgeez::Builder, '#build' do
 
       it 'writes a file' do
         expect(logger).to receive(:info).exactly(:twice)
-        expect(file).to receive(:write).with(IO.read('./spec/fixtures/icons-svgo.svg'))
+        expect(file).to receive(:write).with(%(#{IO.read('./spec/fixtures/icons-svgo.svg')}\n))
 
         builder.build
       end
