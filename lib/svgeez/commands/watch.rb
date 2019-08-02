@@ -1,33 +1,35 @@
 module Svgeez
   module Commands
     class Watch < Command
-      def self.init_with_program(program)
-        program.command(:watch) do |command|
-          command.description 'Watches a folder of SVG icons for changes'
-          command.syntax 'watch [options]'
+      class << self
+        def process(options)
+          builder = Svgeez::Builder.new(options)
+          folder_path = builder.source.folder_path
 
-          add_build_options(command)
+          listener = Listen.to(folder_path, only: /\.svg\z/) { builder.build }
 
-          command.action do |_, options|
-            Build.process(options)
-            Watch.process(options)
-          end
-        end
-      end
+          Svgeez.logger.info "Watching `#{folder_path}` for changes... Press ctrl-c to stop."
 
-      def self.process(options)
-        builder = Svgeez::Builder.new(options)
-
-        listener = Listen.to(builder.source.folder_path, only: /\.svg\z/) do
-          builder.build
+          listener.start
+          sleep
+        rescue Interrupt
+          Svgeez.logger.info 'Quitting svgeez...'
         end
 
-        Svgeez.logger.info "Watching `#{builder.source.folder_path}` for changes... Press ctrl-c to stop."
+        private
 
-        listener.start
-        sleep
-      rescue Interrupt
-        Svgeez.logger.info 'Quitting svgeez...'
+        def command_action(options)
+          Build.process(options)
+          Watch.process(options)
+        end
+
+        def command_description
+          'Watches a folder of SVG icons for changes'
+        end
+
+        def command_syntax
+          'watch [options]'
+        end
       end
     end
   end
