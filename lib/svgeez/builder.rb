@@ -9,24 +9,29 @@ module Svgeez
       @source = Source.new(options)
       @destination = Destination.new(options)
       @svgo = options.fetch('svgo', false)
+
+      raise SOURCE_IS_DESTINATION_MESSAGE if source_is_destination?
+    rescue RuntimeError => exception
+      logger.error exception.message
     end
 
     # rubocop:disable Metrics/AbcSize
     def build
-      return Svgeez.logger.error(SOURCE_IS_DESTINATION_MESSAGE) if source_is_destination?
-      return Svgeez.logger.warn(NO_SVGS_IN_SOURCE_MESSAGE) if source_is_empty?
+      raise NO_SVGS_IN_SOURCE_MESSAGE if source_is_empty?
 
-      Svgeez.logger.info "Generating sprite at `#{destination.file_path}` from #{source.file_paths.length} SVG#{'s' if source.file_paths.length > 1}..."
+      logger.info "Generating sprite at `#{destination_file_path}` from #{source_files_count} SVG#{'s' if source_files_count > 1}..."
 
       # Make destination folder
       FileUtils.mkdir_p(destination.folder_path)
 
       # Write the file
-      File.open(destination.file_path, 'w') do |f|
-        f.write destination_file_contents
+      File.open(destination_file_path, 'w') do |file|
+        file.write destination_file_contents
       end
 
-      Svgeez.logger.info "Successfully generated sprite at `#{destination.file_path}`."
+      logger.info "Successfully generated sprite at `#{destination_file_path}`."
+    rescue RuntimeError => exception
+      logger.warn exception.message
     end
     # rubocop:enable Metrics/AbcSize
 
@@ -37,6 +42,22 @@ module Svgeez
       file_contents = Optimizer.new.optimize(file_contents) if @svgo
 
       file_contents.insert(4, ' style="display: none;"')
+    end
+
+    def destination_file_path
+      @destination_file_path ||= destination.file_path
+    end
+
+    def logger
+      @logger ||= Svgeez.logger
+    end
+
+    def source_files_count
+      source_file_paths.length
+    end
+
+    def source_file_paths
+      source.file_paths
     end
 
     def source_is_destination?

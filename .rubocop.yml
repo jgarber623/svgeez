@@ -14,6 +14,9 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Enabled: false
 
+Naming/RescuedExceptionsVariableName:
+  PreferredName: exception
+
 RSpec/MultipleExpectations:
   Max: 2
 

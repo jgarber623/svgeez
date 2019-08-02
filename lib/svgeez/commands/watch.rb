@@ -6,11 +6,9 @@ module Svgeez
           builder = Svgeez::Builder.new(options)
           folder_path = builder.source.folder_path
 
-          listener = Listen.to(folder_path, only: /\.svg\z/) { builder.build }
-
           Svgeez.logger.info "Watching `#{folder_path}` for changes... Press ctrl-c to stop."
 
-          listener.start
+          Listen.to(folder_path, only: /\.svg\z/) { builder.build }.start
           sleep
         rescue Interrupt
           Svgeez.logger.info 'Quitting svgeez...'
