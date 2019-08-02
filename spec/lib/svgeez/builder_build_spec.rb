@@ -1,12 +1,29 @@
 describe Svgeez::Builder, '#build' do
+  let(:file) { class_double(File) }
   let(:logger) { Svgeez.logger }
   let(:error_message) { "Setting `source` and `destination` to the same path isn't allowed!" }
   let(:warning_message) { 'No SVGs were found in `source` folder.' }
 
   before do
+    allow(File).to receive(:directory?).and_return(true)
+
     allow(logger).to receive(:error)
     allow(logger).to receive(:info)
     allow(logger).to receive(:warn)
+  end
+
+  context 'when @source does not exist' do
+    let(:builder) { described_class.new }
+    let(:error_message) { 'Provided `source` folder does not exist.' }
+
+    before do
+      allow(File).to receive(:directory?).and_return(false)
+    end
+
+    it 'logs an error' do
+      expect { builder.build }.to raise_error(SystemExit)
+      expect(logger).to have_received(:error).with(error_message)
+    end
   end
 
   context 'when @source and @destination are the same' do
@@ -18,7 +35,7 @@ describe Svgeez::Builder, '#build' do
     end
 
     it 'logs an error' do
-      expect{ builder.build }.to raise_error(SystemExit)
+      expect { builder.build }.to raise_error(SystemExit)
       expect(logger).to have_received(:error).with(error_message)
     end
   end
@@ -32,7 +49,7 @@ describe Svgeez::Builder, '#build' do
     end
 
     it 'logs an error' do
-      expect{ builder.build }.to raise_error(SystemExit)
+      expect { builder.build }.to raise_error(SystemExit)
       expect(logger).to have_received(:error).with(error_message)
     end
   end
@@ -48,7 +65,6 @@ describe Svgeez::Builder, '#build' do
   end
 
   context 'when @source contains SVG files' do
-    let(:file) { class_double(File) }
     let(:source) { instance_double(Svgeez::Source) }
     let(:source_folder_path) { './spec/fixtures/icons' }
 
