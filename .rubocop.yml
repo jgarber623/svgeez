@@ -4,7 +4,7 @@ require:
 
 Metrics/BlockLength:
   Exclude:
-    - "spec/**/*"
+    - spec/**/*
 
 Metrics/LineLength:
   Enabled: false
