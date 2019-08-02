@@ -18,8 +18,7 @@ describe Svgeez::Builder, '#build' do
     end
 
     it 'logs an error' do
-      builder.build
-
+      expect{ builder.build }.to raise_error(SystemExit)
       expect(logger).to have_received(:error).with(error_message)
     end
   end
@@ -33,8 +32,7 @@ describe Svgeez::Builder, '#build' do
     end
 
     it 'logs an error' do
-      builder.build
-
+      expect{ builder.build }.to raise_error(SystemExit)
       expect(logger).to have_received(:error).with(error_message)
     end
   end

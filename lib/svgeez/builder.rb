@@ -13,6 +13,7 @@ module Svgeez
       raise SOURCE_IS_DESTINATION_MESSAGE if source_is_destination?
     rescue RuntimeError => exception
       logger.error exception.message
+      exit
     end
 
     # rubocop:disable Metrics/AbcSize
