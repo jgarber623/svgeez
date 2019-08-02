@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.0.0 / 2019-08-02
+
+### Breaking Changes
+
+- Bump required minimum SVGO version to 1.3.0 ([afa24c6](https://github.com/jgarber623/svgeez/commit/afa24c6)).
+
+### Additional Enhancements
+
+- Refactor command classes ([02f420c](https://github.com/jgarber623/svgeez/commit/02f420c)).
+- Refactor specs ([995f950](https://github.com/jgarber623/svgeez/commit/)).
+- Update development dependencies.
+
 ## 2.0.1 / 2019-01-03
 
 - Expand supported Ruby versions to include 2.6 ([0facfd0](https://github.com/jgarber623/svgeez/commit/0facfd0)).

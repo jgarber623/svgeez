@@ -30,19 +30,19 @@ If you're using [Bundler](http://bundler.io), add svgeez to your project's Gemfi
 ```rb
 source 'https://rubygems.org'
 
-gem 'svgeez', '~> 2.0'
+gem 'svgeez', '~> 3.0'
 ```
 
 …and hop over to your command prompt and run…
 
 ```sh
-$ bundle install
+bundle install
 ```
 
 You may also install svgeez directly by issuing the following command:
 
 ```sh
-$ gem install svgeez
+gem install svgeez
 ```
 
 ## Usage
@@ -56,18 +56,18 @@ You can manually generate an SVG sprite from a folder of SVGs with the `build` c
 A basic example:
 
 ```sh
-$ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
+svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
 ```
 
 The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/icons` into a single SVG sprite file (`icons.svg`) in `~/Sites/sixtwothree.org/images`.
 
 #### Options and Defaults
 
-|Option|Description|
-|---|---|
-|`-s`<br>`--source`|Path to the folder of source SVGs (defaults to `./_svgeez`).|
-|`-d`<br>`--destination`|Path to the destination file or folder (defaults to `./svgeez.svg`)|
-|`--with-svgo`|Optimize SVG sprite file with [SVGO](https://github.com/svg/svgo)|
+| Option                | Description                                                       |
+|:----------------------|:------------------------------------------------------------------|
+| `-s`, `--source`      | Path to folder of source SVGs (defaults to `./_svgeez`).          |
+| `-d`, `--destination` | Path to destination file or folder (defaults to `./svgeez.svg`)   |
+| `--with-svgo`         | Optimize SVG sprite file with [SVGO](https://github.com/svg/svgo) |
 
 ### The `watch` command
 
@@ -76,7 +76,7 @@ The `watch` command takes the same arguments as the `build` command but uses the
 Tweaking the example from above:
 
 ```sh
-$ svgeez watch --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
+svgeez watch --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg
 ```
 
 svgeez will remaing running, watching for new, removed, or updated SVG files in the provided source folder. As SVG files are added, deleted, or modified in the source folder, svgeez will pump out updated SVG sprite files to the destination folder.
@@ -92,7 +92,7 @@ The first section of Jayden Seric's post, [How to optimize SVG](http://jaydenser
 If you have the excellent [SVGO](https://github.com/svg/svgo) utility installed on your system (and the `svgo` command is available in your `PATH`), you can use the `--with-svgo` option and optimize the generated sprite file.
 
 ```sh
-$ svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
+svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
 ```
 
 Depending on the number of individual SVG files in the source folder, using the `--with-svgo` option can add considerable time to SVG sprite generation.
