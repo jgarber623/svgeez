@@ -11,7 +11,7 @@ module Svgeez
       end
 
       def init_with_program(program)
-        program.command(name.downcase.to_sym) do |command|
+        program.command(name.split('::').last.downcase.to_sym) do |command|
           command.description command_description
           command.syntax command_syntax
 
