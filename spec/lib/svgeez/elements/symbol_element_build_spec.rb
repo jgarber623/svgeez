@@ -1,4 +1,4 @@
-describe Svgeez::SymbolElement, '#build' do
+describe Svgeez::Elements::SymbolElement, '#build' do
   let(:uuid) { '1234-abcd-5678-efgh' }
   let(:file_path) { File.expand_path('./spec/fixtures/icons/facebook.svg') }
   let(:file_id) { 'foo' }

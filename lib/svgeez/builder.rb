@@ -33,7 +33,7 @@ module Svgeez
     private
 
     def destination_file_contents
-      file_contents = SvgElement.new(source, destination).build
+      file_contents = Elements::SvgElement.new(source, destination).build
       file_contents = Optimizer.new.optimize(file_contents) if @svgo
 
       file_contents.insert(4, ' style="display: none;"')

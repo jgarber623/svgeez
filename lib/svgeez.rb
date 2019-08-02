@@ -1,9 +1,10 @@
 require 'fileutils'
-require 'listen'
 require 'logger'
-require 'mercenary'
 require 'mkmf'
 require 'securerandom'
+
+require 'listen'
+require 'mercenary'
 
 require 'svgeez/version'
 
@@ -11,12 +12,13 @@ require 'svgeez/command'
 require 'svgeez/commands/build'
 require 'svgeez/commands/watch'
 
+require 'svgeez/elements/svg_element'
+require 'svgeez/elements/symbol_element'
+
 require 'svgeez/builder'
 require 'svgeez/destination'
 require 'svgeez/optimizer'
 require 'svgeez/source'
-require 'svgeez/svg_element'
-require 'svgeez/symbol_element'
 
 module Svgeez
   def self.logger
