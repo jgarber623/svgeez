@@ -22,6 +22,11 @@ Gem::Specification.new do |spec|
   spec.executables   = ['svgeez']
   spec.require_paths = ['lib']
 
+  spec.metadata = {
+    'bug_tracker_uri' => "#{spec.homepage}/issues",
+    'changelog_uri'   => "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
+  }
+
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec', '~> 3.8'
   spec.add_development_dependency 'rubocop', '~> 0.72.0'
