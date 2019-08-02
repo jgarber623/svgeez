@@ -8,7 +8,7 @@ module Svgeez
       raise SVGO_NOT_INSTALLED unless installed?
       raise SVGO_MINIMUM_VERSION_MESSAGE unless supported?
 
-      `cat <<EOF | svgo --disable={cleanupIDs,removeHiddenElems,removeViewBox} -i - -o -\n#{file_contents}\nEOF`
+      `cat <<EOF | svgo --disable=cleanupIDs --disable=removeHiddenElems --disable=removeViewBox -i - -o -\n#{file_contents}\nEOF`
     rescue RuntimeError => exception
       logger.warn exception.message
     end
