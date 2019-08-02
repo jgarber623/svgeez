@@ -2,18 +2,17 @@ require:
   - rubocop-performance
   - rubocop-rspec
 
+Layout/AlignHash:
+  Exclude:
+    - svgeez.gemspec
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+    - svgeez.gemspec
 
 Metrics/LineLength:
   Enabled: false
-
-RSpec/AnyInstance:
-  Enabled: false
-
-RSpec/MessageSpies:
-  EnforcedStyle: receive
 
 RSpec/MultipleExpectations:
   Max: 2
@@ -22,4 +21,7 @@ Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
   Enabled: false
