@@ -5,7 +5,8 @@ module Svgeez
         @file_path = file_path
         @file_id = file_id
         @uuid = SecureRandom.uuid
-        read
+
+        @matches = match_file
       end
 
       def build
@@ -18,40 +19,48 @@ module Svgeez
 
       private
 
-      def read
-        IO.read(@file_path).match(%r{^<svg\s*?(?<attributes>.*?)>(?<content>.*?)</svg>}m) do |matches|
-          @attributes = matches[:attributes]
-          @content = matches[:content]
-        end
+      def match_file
+        IO.read(@file_path).match(%r{^<svg\s*?(?<attributes>.*?)>(\r\n|\r)?(?<content>.*?)(\r\n|\r)?</svg>}m)
       end
 
       def element_attributes
-        attrs = @attributes.scan(/(?:viewBox|xmlns:.+?)=".*?"/m)
+        attrs = @matches[:attributes].scan(/(?:viewBox|xmlns:.+?)=".*?"/m)
         attrs << %(id="#{@file_id}-#{File.basename(@file_path, '.svg').gsub(/['"\s]/, '-')}")
       end
 
       def element_contents
-        sub_content = @content
-        sub_content.scan(/\sid="(.+?)"/).flatten.each do |value|
-
-          sub_content.gsub!(/\s(id|xlink:href)="(#?#{value})"/m, %( \\1="\\2-#{@uuid}"))
-          sub_content.gsub!(/\s(clip-path|fill|filter|marker-end|marker-mid|marker-start|mask|stroke)="url\((##{value})\)"/m, %( \\1="url(\\2-#{@uuid})"))
-          sub_content.gsub!(/<defs>(?<content>.*?)<\/defs>/, "")
+        subbed_content = @matches[:content]
+        @matches[:content].scan(/\sid="(.+?)"/).flatten.each do |value|
+          subbed_content = parameterize_ids(subbed_content, value)
+          subbed_content.gsub!(%r{(\r\n|\r)?<defs>(?<content>.*?)<\/defs>(\r\n|\r)?}m, '')
         end
 
-        sub_content
+        subbed_content
       end
 
+      # def element_contents
+      #   sub_content = @content
+      #   sub_content.scan(/\sid="(.+?)"/).flatten.each do |value|
+      #     sub_content.gsub!(/\s(id|xlink:href)="(#?#{value})"/m, %( \\1="\\2-#{@uuid}"))
+      #     sub_content.gsub!(/\s(clip-path|fill|filter|marker-end|marker-mid|marker-start|mask|stroke)="url\((##{value})\)"/m, %( \\1="url(\\2-#{@uuid})"))
+      #     sub_content.gsub!(%r{(\r\n|\r)?<defs>(?<content>.*?)<\/defs>(\r\n|\r)?}m, '')
+      #   end
+
+      #   sub_content
+      # end
+
       def element_defs
-        @content.match(%r{<defs>(?<content>.*?)</defs>}m) do |match|
+        @matches[:content].match(%r{(\r\n|\r)?<defs>(?<content>.*?)</defs>(\r\n|\r)?}m) do |match|
           content = match[:content]
-          content.scan(/\sid="(.+?)"/).flatten.each do |value|
-
-            content.gsub!(/\s(id|xlink:href)="(#?#{value})"/m, %( \\1="\\2-#{@uuid}"))
-          end
-
+          content.scan(/\sid="(.+?)"/).flatten.map { |value| parameterize_ids(content, value) }
           content
         end
+      end
+
+      def parameterize_ids(content, id)
+        content.gsub!(/\s(id|xlink:href)="(#?#{id})"/m, %( \\1="\\2-#{@uuid}"))
+        content.gsub!(/\s(clip-path|fill|filter|marker-end|marker-mid|marker-start|mask|stroke)="url\((##{id})\)"/m, %( \\1="url(\\2-#{@uuid})"))
+        content
       end
     end
   end

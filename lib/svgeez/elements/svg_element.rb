@@ -4,6 +4,9 @@ module Svgeez
       def initialize(source, destination)
         @source = source
         @destination = destination
+        @symbol_elements = @source.file_paths.map do |file_path|
+          SymbolElement.new(file_path, @destination.file_id)
+        end
       end
 
       def build
@@ -12,22 +15,12 @@ module Svgeez
 
       private
 
-      def symbol_elements
-        if @elements
-          @elements
-        else
-          @elements = @source.file_paths.map do |file_path|
-            SymbolElement.new(file_path, @destination.file_id)
-          end
-        end
-      end
-
       def symbols
-        symbol_elements.map(&:build).join
+        @symbol_elements.map(&:build).join
       end
 
       def defs_element
-        DefsElement.new(symbol_elements).build
+        DefsElement.new(@symbol_elements).build
       end
     end
   end

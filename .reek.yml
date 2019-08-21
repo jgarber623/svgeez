@@ -11,6 +11,8 @@ detectors:
   UtilityFunction:
     exclude:
       - Svgeez::Elements::SymbolElement#element_contents
+  NestedIterators:
+    max_allow_nesting: 2
 
 exclude_paths:
   - vendor/
