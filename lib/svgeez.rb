@@ -12,6 +12,7 @@ require 'svgeez/command'
 require 'svgeez/commands/build'
 require 'svgeez/commands/watch'
 
+require 'svgeez/elements/defs_element'
 require 'svgeez/elements/svg_element'
 require 'svgeez/elements/symbol_element'
 
