@@ -28,11 +28,11 @@ Gem::Specification.new do |spec|
   }
 
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'reek', '~> 5.4'
+  spec.add_development_dependency 'reek', '~> 5.5'
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 0.77.0'
   spec.add_development_dependency 'rubocop-performance', '~> 1.5'
-  spec.add_development_dependency 'rubocop-rspec', '~> 1.36'
+  spec.add_development_dependency 'rubocop-rspec', '~> 1.37'
   spec.add_development_dependency 'simplecov', '~> 0.17.1'
   spec.add_development_dependency 'simplecov-console', '~> 0.6.0'
 
