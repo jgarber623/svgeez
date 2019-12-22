@@ -1,13 +1,11 @@
+dist: bionic
 language: ruby
 rvm:
   - 2.4
   - 2.5
   - 2.6
-cache:
-  - bundler
+cache: bundler
 before_install:
-  - gem update --system
-  - gem install bundler
   - nvm install node
   - npm install -g svgo
 before_script:
