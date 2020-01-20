@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0 / 2020-01-20
+
+- Expand supported Ruby versions to include 2.7 ([bcc23b5](https://github.com/jgarber623/svgeez/commit/bcc23b5)).
+
 ## 3.0.0 / 2019-08-02
 
 ### Breaking Changes
