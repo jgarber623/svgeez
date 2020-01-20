@@ -2,17 +2,17 @@ require:
   - rubocop-performance
   - rubocop-rspec
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Exclude:
     - svgeez.gemspec
+
+Layout/LineLength:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
     - svgeez.gemspec
-
-Metrics/LineLength:
-  Enabled: false
 
 Naming/RescuedExceptionsVariableName:
   PreferredName: exception
