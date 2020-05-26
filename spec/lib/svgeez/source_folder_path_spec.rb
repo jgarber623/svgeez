@@ -1,4 +1,4 @@
-describe Svgeez::Source, '#folder_path' do
+RSpec.describe Svgeez::Source, '#folder_path' do
   context 'when @source is not specified' do
     let(:source) { described_class.new }
 

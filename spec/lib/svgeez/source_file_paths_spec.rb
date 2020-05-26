@@ -1,4 +1,4 @@
-describe Svgeez::Source, '#file_paths' do
+RSpec.describe Svgeez::Source, '#file_paths' do
   let(:source) { described_class.new }
 
   let(:file_paths) do

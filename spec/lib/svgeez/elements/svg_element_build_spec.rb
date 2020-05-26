@@ -1,4 +1,4 @@
-describe Svgeez::Elements::SvgElement, '#build' do
+RSpec.describe Svgeez::Elements::SvgElement, '#build' do
   let(:source) { instance_double(Svgeez::Source) }
   let(:destination) { instance_double(Svgeez::Destination) }
   let(:symbol_element) { instance_double(Svgeez::Elements::SymbolElement) }

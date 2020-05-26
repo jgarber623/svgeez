@@ -1,4 +1,4 @@
-describe Svgeez::Destination, '#file_name' do
+RSpec.describe Svgeez::Destination, '#file_name' do
   context 'when @destination is not specified' do
     let(:destination) { described_class.new }
 

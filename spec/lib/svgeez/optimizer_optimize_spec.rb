@@ -1,4 +1,4 @@
-describe Svgeez::Optimizer, '#optimize' do
+RSpec.describe Svgeez::Optimizer, '#optimize' do
   let(:logger) { Svgeez.logger }
   let(:optimizer) { described_class.new }
 

@@ -1,4 +1,4 @@
-describe Svgeez::Builder, '#build' do
+RSpec.describe Svgeez::Builder, '#build' do
   let(:file) { class_double(File) }
   let(:logger) { Svgeez.logger }
   let(:error_message) { "Setting `source` and `destination` to the same path isn't allowed!" }
