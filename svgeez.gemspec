@@ -27,15 +27,6 @@ Gem::Specification.new do |spec|
     'changelog_uri'   => "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
   }
 
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'reek', '~> 6.0'
-  spec.add_development_dependency 'rspec', '~> 3.9'
-  spec.add_development_dependency 'rubocop', '~> 0.84.0'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.5'
-  spec.add_development_dependency 'rubocop-rspec', '~> 1.39'
-  spec.add_development_dependency 'simplecov', '~> 0.18.5'
-  spec.add_development_dependency 'simplecov-console', '~> 0.7.2'
-
   spec.add_runtime_dependency 'listen', '~> 3.2'
   spec.add_runtime_dependency 'mercenary', '~> 0.4.0'
 end
