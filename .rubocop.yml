@@ -2,9 +2,8 @@ require:
   - rubocop-performance
   - rubocop-rspec
 
-Layout/HashAlignment:
-  Exclude:
-    - svgeez.gemspec
+AllCops:
+  NewCops: disable
 
 Layout/LineLength:
   Enabled: false
@@ -12,7 +11,6 @@ Layout/LineLength:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
-    - svgeez.gemspec
 
 Naming/RescuedExceptionsVariableName:
   PreferredName: exception
