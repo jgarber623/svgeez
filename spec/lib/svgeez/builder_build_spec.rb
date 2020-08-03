@@ -118,4 +118,22 @@ RSpec.describe Svgeez::Builder, '#build' do
       end
     end
   end
+
+  describe '--prefix option' do
+    context 'when --prefix option is not used' do
+      it 'assigns destination file_id as @prefix' do
+        builder = described_class.new
+
+        expect(builder.prefix).to eq(builder.destination.file_id)
+      end
+    end
+
+    context 'when --prefix option is used' do
+      it 'assigns provided value as @prefix' do
+        builder = described_class.new('prefix' => 'icon')
+
+        expect(builder.prefix).to eq('icon')
+      end
+    end
+  end
 end
