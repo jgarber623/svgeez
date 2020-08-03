@@ -3,7 +3,7 @@ RSpec.describe Svgeez::Elements::SvgElement, '#build' do
   let(:destination) { instance_double(Svgeez::Destination) }
   let(:symbol_element) { instance_double(Svgeez::Elements::SymbolElement) }
 
-  let(:svg_element) { described_class.new(source, destination) }
+  let(:svg_element) { described_class.new(source, destination, destination.file_id) }
 
   before do
     allow(Svgeez::Source).to receive(:new).and_return(source)
