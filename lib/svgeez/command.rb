@@ -31,6 +31,7 @@ module Svgeez
       def add_options(command)
         command.option 'source', '-s', '--source [FOLDER]', 'Source folder (defaults to ./_svgeez)'
         command.option 'destination', '-d', '--destination [OUTPUT]', 'Destination file or folder (defaults to ./svgeez.svg)'
+        command.option 'prefix', '-p', '--prefix [PREFIX]', 'Custom Prefix for icon id (defaults to destination filename)'
         command.option 'svgo', '--with-svgo', 'Optimize source SVGs with SVGO before sprite generation (non-destructive)'
       end
     end
