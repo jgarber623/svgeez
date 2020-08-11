@@ -67,6 +67,7 @@ The above example will combine all SVG files in `~/Sites/sixtwothree.org/images/
 |:----------------------|:------------------------------------------------------------------|
 | `-s`, `--source`      | Path to folder of source SVGs (defaults to `./_svgeez`).          |
 | `-d`, `--destination` | Path to destination file or folder (defaults to `./svgeez.svg`)   |
+| `-p`, `--prefix`      | Optional prefix to append to generated `id` attribute values      |
 | `--with-svgo`         | Optimize SVG sprite file with [SVGO](https://github.com/svg/svgo) |
 
 ### The `watch` command
@@ -223,6 +224,7 @@ svgeez is written and maintained by [Jason Garber](https://sixtwothree.org).
 
 ### Additional Contributors
 
+- [Abhinav Mishra](https://github.com/abhinavmsra)
 - [Brett Wilkins](https://github.com/bwilkins)
 - [danny](https://github.com/f96q)
 - [Denis Hovart](https://github.com/dhovart)

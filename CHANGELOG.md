@@ -2,6 +2,7 @@
 
 ## unreleased
 
+- Add `--prefix` option (#79 and #80)
 - Update development Ruby version to 2.4.10 (8d517c1)
 
 ## 3.1.0 / 2020-01-20
