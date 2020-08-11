@@ -4,7 +4,7 @@
 
 [![Gem](https://img.shields.io/gem/v/svgeez.svg?style=for-the-badge)](https://rubygems.org/gems/svgeez)
 [![Downloads](https://img.shields.io/gem/dt/svgeez.svg?style=for-the-badge)](https://rubygems.org/gems/svgeez)
-[![Build](https://img.shields.io/travis/jgarber623/svgeez/master.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/svgeez)
+[![Build](https://img.shields.io/travis/jgarber623/svgeez/main.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/svgeez)
 [![Dependencies](https://img.shields.io/depfu/jgarber623/svgeez.svg?style=for-the-badge)](https://depfu.com/github/jgarber623/svgeez)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/svgeez.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez)
 [![Coverage](https://img.shields.io/codeclimate/c/jgarber623/svgeez.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez/code)
@@ -197,7 +197,7 @@ button svg {
 
 ## Improving svgeez
 
-You want to help make svgeez better? Hell yeah! I like your enthusiasm. For more on how you can help, check out [CONTRIBUTING.md](https://github.com/jgarber623/svgeez/blob/master/CONTRIBUTING.md).
+You want to help make svgeez better? Hell yeah! I like your enthusiasm. For more on how you can help, check out [CONTRIBUTING.md](https://github.com/jgarber623/svgeez/blob/main/CONTRIBUTING.md).
 
 ### Donations
 
