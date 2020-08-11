@@ -1,6 +1,6 @@
 # Changelog
 
-## unreleased
+## 3.2.0 / 2020-08-11
 
 - Add `--prefix` option (#79 and #80)
 - Update development Ruby version to 2.4.10 (8d517c1)
