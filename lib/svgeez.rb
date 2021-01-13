@@ -22,7 +22,7 @@ require 'svgeez/source'
 
 module Svgeez
   def self.logger
-    @logger ||= Logger.new(STDOUT)
+    @logger ||= Logger.new($stdout)
   end
 
   logger.formatter = proc { |_, _, _, msg| "#{msg}\n" }
