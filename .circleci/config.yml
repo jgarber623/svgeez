@@ -13,7 +13,6 @@ jobs:
       tag: << parameters.version >>
     environment:
       NPM_CONFIG_PREFIX: /home/circleci/.npm
-      PATH: /home/circleci/.npm/bin:$PATH
     steps:
       - checkout
       - run:
@@ -22,7 +21,9 @@ jobs:
       - ruby/install-deps
       - run:
           name: Install SVGO
-          command: npm install -g svgo
+          command: |
+            export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
+            npm install -g svgo
       - run:
           name: Install CodeClimate test reporter
           command: |
