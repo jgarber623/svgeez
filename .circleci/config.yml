@@ -11,6 +11,9 @@ jobs:
     executor:
       name: ruby/default
       tag: << parameters.version >>
+    environment:
+      NPM_CONFIG_PREFIX: /home/circleci/.npm
+      PATH: /home/circleci/.npm/bin:$PATH
     steps:
       - checkout
       - run:
