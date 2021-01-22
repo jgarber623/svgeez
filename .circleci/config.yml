@@ -1,0 +1,44 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.2
+
+jobs:
+  test:
+    parameters:
+      version:
+        type: string
+    executor:
+      name: ruby/default
+      tag: << parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: Generate Gemfile.lock
+          command: bundle lock
+      - ruby/install-deps
+      - run:
+          name: Install CodeClimate test reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+      - run:
+          name: Run default Rake task
+          command: bundle exec rake
+      - run:
+          name: Upload coverage report to CodeClimate
+          command: ./cc-test-reporter after-build
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - test:
+          matrix:
+            parameters:
+              version:
+                - "2.4"
+                - "2.5"
+                - "2.6"
+                - "2.7"

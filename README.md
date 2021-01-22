@@ -2,12 +2,11 @@
 
 **A Ruby gem for automatically generating an SVG sprite from a folder of SVG icons.**
 
-[![Gem](https://img.shields.io/gem/v/svgeez.svg?style=for-the-badge)](https://rubygems.org/gems/svgeez)
-[![Downloads](https://img.shields.io/gem/dt/svgeez.svg?style=for-the-badge)](https://rubygems.org/gems/svgeez)
-[![Build](https://img.shields.io/travis/com/jgarber623/svgeez/main.svg?style=for-the-badge)](https://travis-ci.com/github/jgarber623/svgeez)
-[![Dependencies](https://img.shields.io/depfu/jgarber623/svgeez.svg?style=for-the-badge)](https://depfu.com/github/jgarber623/svgeez)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/svgeez.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez)
-[![Coverage](https://img.shields.io/codeclimate/c/jgarber623/svgeez.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez/code)
+[![Gem](https://img.shields.io/gem/v/svgeez.svg?logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/svgeez)
+[![Downloads](https://img.shields.io/gem/dt/svgeez.svg?logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/svgeez)
+[![Build](https://img.shields.io/circleci/build/github/jgarber623/svgeez?logo=circleci&style=for-the-badge)](https://app.circleci.com/pipelines/github/jgarber623/svgeez)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/svgeez.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez)
+[![Coverage](https://img.shields.io/codeclimate/c/jgarber623/svgeez.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez/code)
 
 If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
