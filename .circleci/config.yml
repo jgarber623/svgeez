@@ -49,3 +49,4 @@ workflows:
                 - "2.5-node"
                 - "2.6-node"
                 - "2.7-node"
+                - "3.0-node"
