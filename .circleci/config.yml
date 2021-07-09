@@ -11,19 +11,20 @@ jobs:
     executor:
       name: ruby/default
       tag: << parameters.version >>
-    environment:
-      NPM_CONFIG_PREFIX: /home/circleci/.npm
     steps:
       - checkout
+      - run:
+          name: Configure environment variables
+          command: |
+            export NPM_CONFIG_PREFIX=/home/circleci/.npm
+            export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
       - run:
           name: Generate Gemfile.lock
           command: bundle lock
       - ruby/install-deps
       - run:
           name: Install SVGO
-          command: |
-            export PATH=$NPM_CONFIG_PREFIX/bin:$PATH
-            npm install -g svgo
+          command: npm install -g svgo
       - run:
           name: Install CodeClimate test reporter
           command: |
