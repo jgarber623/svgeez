@@ -30,8 +30,8 @@ npm install -g svgo
 1. Install development dependencies as outlined above.
 1. Create a feature branch for the code changes you're looking to make: `git checkout -b my-new-feature`.
 1. _Write some code!_
-1. Build (`bin/rake build`) and install (`bin/rake install`) your updated code.
-1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `bin/rake`.
+1. Build (`bundle exec rake build`) and install (`bundle exec rake install`) your updated code.
+1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `bin/ci`.
 1. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`. _(See [this excellent article](https://chris.beams.io/posts/git-commit/) for tips on writing useful Git commit messages.)_
 1. Push the branch to your fork: `git push -u origin my-new-feature`.
 1. Create a new [pull request][pulls] and we'll review your changes.
@@ -39,8 +39,6 @@ npm install -g svgo
 ## Code Style
 
 Code formatting conventions are defined in the `.editorconfig` file which uses the [EditorConfig](http://editorconfig.org) syntax. There are [plugins for a variety of editors](http://editorconfig.org/#download) that utilize the settings in the `.editorconfig` file. We recommended you install the EditorConfig plugin for your editor of choice.
-
-Additionally, [Rubocop](https://github.com/bbatsov/rubocop) can be used to help identify possible trouble areas in your code. Run `bin/rubocop` to generate Rubocop's static code analysis report.
 
 Your bug fix or feature addition won't be rejected if it runs afoul of any (or all) of these guidelines, but following the guidelines will definitely make everyone's lives a little easier.
 

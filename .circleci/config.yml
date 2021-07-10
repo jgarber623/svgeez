@@ -27,8 +27,8 @@ jobs:
             chmod +x ./cc-test-reporter
             ./cc-test-reporter before-build
       - run:
-          name: Run default Rake task
-          command: bundle exec rake
+          name: Run CI script
+          command: bin/ci
       - run:
           name: Upload coverage report to CodeClimate
           command: ./cc-test-reporter after-build
