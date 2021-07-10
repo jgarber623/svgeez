@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo '[ bin/ci ] Running test suite...'
+echo '[ bin/ci ] => bundle exec rspec'
+bundle exec rspec
+
+set +e
+
+echo '[ bin/ci ] Running code quality checks...'
+echo '[ bin/ci ] => bundle exec rubocop'
+bundle exec rubocop
+rubocop_exit_code=$?
+
+echo '[ bin/ci ] => bundle exec reek'
+bundle exec reek
+reek_exit_code=$?
+
+set -e
+
+echo '[ bin/ci ] Done!'
+
+if [[ $rubocop_exit_code > 0 || $reek_exit_code > 0 ]]; then
+  exit 1
+fi
