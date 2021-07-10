@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.metadata['bug_tracker_uri'] = "#{spec.homepage}/issues"
   spec.metadata['changelog_uri']   = "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
 
-  spec.add_runtime_dependency 'listen', '~> 3.2'
+  spec.add_runtime_dependency 'listen', '~> 3.5'
   spec.add_runtime_dependency 'mercenary', '~> 0.4.0'
 end
