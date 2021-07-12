@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.0.0 / 2021-07-12
+
+- **Breaking Change:** Require SVGO version 1.3.2 (c108320)
+- Add Ruby 3 support (af4772d)
+- **Breaking Change:** Remove Ruby 2.4 support (3ec6ea3)
+- Update `listen` dependency constraint (e05a61b)
+- Remove development gem dependency constraints (2911fae)
+- Update development Ruby version to 2.5.9 (1e61b0b)
+- Replace `bin/*` scripts with `bin/ci`
+- Migrate from Travis CI to Circle CI
+
 ## 3.2.0 / 2020-08-11
 
 - Add `--prefix` option (#79 and #80)
