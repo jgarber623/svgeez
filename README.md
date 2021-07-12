@@ -230,6 +230,7 @@ svgeez is written and maintained by [Jason Garber](https://sixtwothree.org).
 - [danny](https://github.com/f96q)
 - [Denis Hovart](https://github.com/dhovart)
 - [Desmond Sadler](https://github.com/dezman)
+- [motoroller95](https://github.com/motoroller95)
 
 ## License
 
