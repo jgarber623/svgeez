@@ -91,6 +91,8 @@ The first section of Jayden Seric's post, [How to optimize SVG](http://jaydenser
 
 If you have the excellent [SVGO](https://github.com/svg/svgo) utility installed on your system (and the `svgo` command is available in your `PATH`), you can use the `--with-svgo` option and optimize the generated sprite file.
 
+**Note:** If using SVGO with svgeez, you must use SVGO version 1.3.2. Future releases of svgeez will update to use SVGO version 2.x.x.
+
 ```sh
 svgeez build --source ~/Sites/sixtwothree.org/images/icons --destination ~/Sites/sixtwothree.org/images/icons.svg --with-svgo
 ```

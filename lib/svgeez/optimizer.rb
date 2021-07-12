@@ -1,12 +1,12 @@
 module Svgeez
   class Optimizer
-    SVGO_MINIMUM_VERSION = '1.3.0'.freeze
-    SVGO_MINIMUM_VERSION_MESSAGE = "svgeez relies on SVGO #{SVGO_MINIMUM_VERSION} or newer. Continuing with standard sprite generation...".freeze
+    SVGO_VERSION = '1.3.2'.freeze
+    SVGO_VERSION_MESSAGE = "svgeez relies on SVGO #{SVGO_VERSION}. Continuing with standard sprite generation...".freeze
     SVGO_NOT_INSTALLED = 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...'.freeze
 
     def optimize(file_contents)
       raise SVGO_NOT_INSTALLED unless installed?
-      raise SVGO_MINIMUM_VERSION_MESSAGE unless supported?
+      raise SVGO_VERSION_MESSAGE unless supported?
 
       `cat <<EOF | svgo --disable=cleanupIDs --disable=removeHiddenElems --disable=removeViewBox -i - -o -\n#{file_contents}\nEOF`
     rescue RuntimeError => exception
@@ -24,7 +24,7 @@ module Svgeez
     end
 
     def supported?
-      @supported ||= Gem::Version.new(`svgo -v`.strip) >= Gem::Version.new(SVGO_MINIMUM_VERSION)
+      @supported ||= `svgo -v`.strip == SVGO_VERSION
     end
   end
 end

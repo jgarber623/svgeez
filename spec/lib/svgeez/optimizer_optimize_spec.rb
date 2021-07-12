@@ -24,7 +24,7 @@ RSpec.describe Svgeez::Optimizer, '#optimize' do
 
   context 'when SVGO executable is found' do
     context 'when SVGO version is not supported' do
-      let(:warning_message) { 'svgeez relies on SVGO 1.3.0 or newer. Continuing with standard sprite generation...' }
+      let(:warning_message) { 'svgeez relies on SVGO 1.3.2. Continuing with standard sprite generation...' }
 
       before do
         allow(optimizer).to receive(:supported?).and_return(false)
