@@ -8,7 +8,7 @@ There are a couple ways you can help improve svgeez:
 
 ## Getting Started
 
-svgeez is developed using Ruby 2.5.9 and is additionally tested against Ruby 2.6 and 2.7 using [CircleCI](https://app.circleci.com/pipelines/github/jgarber623/svgeez).
+svgeez is developed using Ruby 2.5.9 and is additionally tested against Ruby 2.6, 2.7, and 3.0 using [CircleCI](https://app.circleci.com/pipelines/github/jgarber623/svgeez).
 
 Before making changes to svgeez, you'll want to install Ruby 2.5.9. It's recommended that you use a Ruby version managment tool like [rbenv](https://github.com/rbenv/rbenv), [chruby](https://github.com/postmodern/chruby), or [rvm](https://github.com/rvm/rvm). Once you've installed Ruby 2.5.9 using your method of choice, install the project's gems by running:
 
