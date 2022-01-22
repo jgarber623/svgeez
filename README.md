@@ -4,7 +4,7 @@
 
 [![Gem](https://img.shields.io/gem/v/svgeez.svg?logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/svgeez)
 [![Downloads](https://img.shields.io/gem/dt/svgeez.svg?logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/svgeez)
-[![Build](https://img.shields.io/circleci/build/github/jgarber623/svgeez?logo=circleci&style=for-the-badge)](https://app.circleci.com/pipelines/github/jgarber623/svgeez)
+[![Build](https://img.shields.io/github/workflow/status/jgarber623/svgeez/CI?logo=github&style=for-the-badge)](https://github.com/jgarber623/svgeez/actions/workflows/ci.yml)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/svgeez.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez)
 [![Coverage](https://img.shields.io/codeclimate/c/jgarber623/svgeez.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez/code)
 
@@ -20,7 +20,7 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 ## Getting Started
 
-Before installing and using svgeez, you'll want to have Ruby 2.5 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). svgeez is developed using Ruby 2.5.9 and is additionally tested against Ruby 2.6, 2.7, 3.0, and 3.1 using [CircleCI](https://app.circleci.com/pipelines/github/jgarber623/svgeez).
+Before installing and using svgeez, you'll want to have Ruby 2.5 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). svgeez is developed using Ruby 2.5.9 and is additionally tested against Ruby 2.6, 2.7, 3.0, and 3.1 using [GitHub Actions](https://github.com/jgarber623/svgeez/actions).
 
 ## Installation
 
