@@ -2,7 +2,7 @@
 
 module Svgeez
   class Destination
-    DEFAULT_DESTINATION_FILE_NAME = 'svgeez.svg'.freeze
+    DEFAULT_DESTINATION_FILE_NAME = 'svgeez.svg'
 
     def initialize(options = {})
       @destination = File.expand_path(options.fetch('destination', "./#{DEFAULT_DESTINATION_FILE_NAME}"))

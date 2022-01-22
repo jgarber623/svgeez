@@ -2,9 +2,9 @@
 
 module Svgeez
   class Builder
-    SOURCE_IS_DESTINATION_MESSAGE = "Setting `source` and `destination` to the same path isn't allowed!".freeze
-    SOURCE_DOES_NOT_EXIST = 'Provided `source` folder does not exist.'.freeze
-    NO_SVGS_IN_SOURCE_MESSAGE = 'No SVGs were found in `source` folder.'.freeze
+    SOURCE_IS_DESTINATION_MESSAGE = "Setting `source` and `destination` to the same path isn't allowed!"
+    SOURCE_DOES_NOT_EXIST = 'Provided `source` folder does not exist.'
+    NO_SVGS_IN_SOURCE_MESSAGE = 'No SVGs were found in `source` folder.'
 
     attr_reader :source, :destination, :prefix
 

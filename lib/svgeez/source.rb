@@ -2,7 +2,7 @@
 
 module Svgeez
   class Source
-    DEFAULT_INPUT_FOLDER_PATH = './_svgeez'.freeze
+    DEFAULT_INPUT_FOLDER_PATH = './_svgeez'
 
     attr_reader :folder_path
 

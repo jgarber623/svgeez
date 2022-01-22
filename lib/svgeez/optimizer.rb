@@ -2,9 +2,9 @@
 
 module Svgeez
   class Optimizer
-    SVGO_VERSION = '1.3.2'.freeze
-    SVGO_VERSION_MESSAGE = "svgeez relies on SVGO #{SVGO_VERSION}. Continuing with standard sprite generation...".freeze
-    SVGO_NOT_INSTALLED = 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...'.freeze
+    SVGO_VERSION = '1.3.2'
+    SVGO_VERSION_MESSAGE = "svgeez relies on SVGO #{SVGO_VERSION}. Continuing with standard sprite generation..."
+    SVGO_NOT_INSTALLED = 'Unable to find `svgo` in your PATH. Continuing with standard sprite generation...'
 
     def optimize(file_contents)
       raise SVGO_NOT_INSTALLED unless installed?
