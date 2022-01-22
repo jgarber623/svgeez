@@ -11,8 +11,8 @@ module Svgeez
       raise SVGO_VERSION_MESSAGE unless supported?
 
       `cat <<EOF | svgo --disable=cleanupIDs --disable=removeHiddenElems --disable=removeViewBox -i - -o -\n#{file_contents}\nEOF`
-    rescue RuntimeError => exception
-      logger.warn exception.message
+    rescue RuntimeError => e
+      logger.warn e.message
     end
 
     private

@@ -16,8 +16,8 @@ module Svgeez
 
       raise SOURCE_IS_DESTINATION_MESSAGE if source_is_destination?
       raise SOURCE_DOES_NOT_EXIST unless source_exists?
-    rescue RuntimeError => exception
-      logger.error exception.message
+    rescue RuntimeError => e
+      logger.error e.message
       exit
     end
 
@@ -36,8 +36,8 @@ module Svgeez
       end
 
       logger.info "Successfully generated sprite at `#{destination_file_path}`."
-    rescue RuntimeError => exception
-      logger.warn exception.message
+    rescue RuntimeError => e
+      logger.warn e.message
     end
     # rubocop:enable Metrics/AbcSize
 
