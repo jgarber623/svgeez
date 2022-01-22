@@ -1,2 +1,11 @@
 inherit_from:
   - https://raw.githubusercontent.com/jgarber623/rubocop-configs/main/.rubocop.gem.yml
+
+# Checks if the length of a block exceeds some maximum value.
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+# Checks if examples contain too many `expect` calls.
+RSpec/MultipleExpectations:
+  Max: 2
