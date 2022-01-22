@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0 / 2022-01-22
+
+- Update required Ruby version to include versions less than 4 (47e2bdf)
+
 ## 4.0.0 / 2021-07-12
 
 - **Breaking Change:** Require SVGO version 1.3.2 (c108320)
