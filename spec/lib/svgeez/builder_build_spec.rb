@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Svgeez::Builder, '#build' do
   let(:file) { class_double(File) }
   let(:logger) { Svgeez.logger }

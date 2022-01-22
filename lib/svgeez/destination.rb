@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Svgeez
   class Destination
     DEFAULT_DESTINATION_FILE_NAME = 'svgeez.svg'.freeze

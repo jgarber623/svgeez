@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Svgeez::Source, '#folder_path' do
   context 'when @source is not specified' do
     let(:source) { described_class.new }

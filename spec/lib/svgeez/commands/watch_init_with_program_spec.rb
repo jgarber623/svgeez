@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Svgeez::Commands::Watch, '.init_with_program' do
   let(:program) { Mercenary::Program.new(:svgeez) }
   let(:command) { described_class.init_with_program(program) }

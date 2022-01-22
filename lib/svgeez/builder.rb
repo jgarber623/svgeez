@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Svgeez
   class Builder
     SOURCE_IS_DESTINATION_MESSAGE = "Setting `source` and `destination` to the same path isn't allowed!".freeze

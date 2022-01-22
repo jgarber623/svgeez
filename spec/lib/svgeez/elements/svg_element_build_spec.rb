@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Svgeez::Elements::SvgElement, '#build' do
   let(:source) { instance_double(Svgeez::Source) }
   let(:destination) { instance_double(Svgeez::Destination) }

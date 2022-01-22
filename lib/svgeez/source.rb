@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Svgeez
   class Source
     DEFAULT_INPUT_FOLDER_PATH = './_svgeez'.freeze

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Svgeez
   class Command
     class << self

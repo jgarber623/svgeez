@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Svgeez::Source, '#file_paths' do
   let(:source) { described_class.new }
 

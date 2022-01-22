@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'simplecov_json_formatter'
 require 'simplecov-console'
 
