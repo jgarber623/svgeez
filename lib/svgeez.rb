@@ -8,19 +8,19 @@ require 'securerandom'
 require 'listen'
 require 'mercenary'
 
-require 'svgeez/version'
+require_relative 'svgeez/version'
 
-require 'svgeez/command'
-require 'svgeez/commands/build'
-require 'svgeez/commands/watch'
+require_relative 'svgeez/command'
+require_relative 'svgeez/commands/build'
+require_relative 'svgeez/commands/watch'
 
-require 'svgeez/elements/svg_element'
-require 'svgeez/elements/symbol_element'
+require_relative 'svgeez/elements/svg_element'
+require_relative 'svgeez/elements/symbol_element'
 
-require 'svgeez/builder'
-require 'svgeez/destination'
-require 'svgeez/optimizer'
-require 'svgeez/source'
+require_relative 'svgeez/builder'
+require_relative 'svgeez/destination'
+require_relative 'svgeez/optimizer'
+require_relative 'svgeez/source'
 
 module Svgeez
   def self.logger
