@@ -11,6 +11,10 @@ detectors:
   UtilityFunction:
     exclude:
       - Svgeez::Elements::SymbolElement#element_contents
+  UncommunicativeVariableName:
+    accept:
+      - _
+      - e
 
 exclude_paths:
   - vendor/
