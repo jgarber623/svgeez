@@ -10,6 +10,12 @@ Metrics/BlockLength:
   Exclude:
     - spec/**/*.rb
 
+# Checks for long examples.
+RSpec/ExampleLength:
+  CountAsOne:
+    - array
+    - hash
+
 # Checks if examples contain too many `expect` calls.
 RSpec/MultipleExpectations:
   Max: 2
