@@ -15,16 +15,19 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/jgarber623/svgeez'
   spec.license       = 'MIT'
 
-  spec.files         = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(bin|spec)/}) }
-  end
+  spec.files         = Dir['exe/**/*', 'lib/**/*'].reject { |f| File.directory?(f) }
+  spec.files        += %w[LICENSE CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md README.md]
+  spec.files        += %w[svgeez.gemspec]
 
   spec.bindir        = 'exe'
   spec.executables   = ['svgeez']
   spec.require_paths = ['lib']
 
-  spec.metadata['bug_tracker_uri'] = "#{spec.homepage}/issues"
-  spec.metadata['changelog_uri']   = "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
+  spec.metadata = {
+    'bug_tracker_uri' => "#{spec.homepage}/issues",
+    'changelog_uri' => "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md",
+    'rubygems_mfa_required' => 'true'
+  }
 
   spec.add_runtime_dependency 'listen', '~> 3.5'
   spec.add_runtime_dependency 'mercenary', '~> 0.4.0'
