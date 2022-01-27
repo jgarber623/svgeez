@@ -19,3 +19,7 @@ RSpec/ExampleLength:
 # Checks if examples contain too many `expect` calls.
 RSpec/MultipleExpectations:
   Max: 2
+
+# Checks if example groups contain too many `let` and `subject` calls.
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
