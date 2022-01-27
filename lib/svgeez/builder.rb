@@ -31,9 +31,7 @@ module Svgeez
       FileUtils.mkdir_p(destination.folder_path)
 
       # Write the file
-      File.open(destination_file_path, 'w') do |file|
-        file.write destination_file_contents
-      end
+      File.write(destination_file_path, destination_file_contents)
 
       logger.info "Successfully generated sprite at `#{destination_file_path}`."
     rescue RuntimeError => e
