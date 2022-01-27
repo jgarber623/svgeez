@@ -1,6 +1,10 @@
 inherit_from:
   - https://raw.githubusercontent.com/jgarber623/rubocop-configs/main/.rubocop.gem.yml
 
+# Checks the length of lines in the source code.
+Layout/LineLength:
+  Enabled: false
+
 # Checks if the length of a block exceeds some maximum value.
 Metrics/BlockLength:
   Exclude:
