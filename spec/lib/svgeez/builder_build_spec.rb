@@ -98,7 +98,7 @@ RSpec.describe Svgeez::Builder, '#build' do
       it 'writes a file' do
         builder.build
 
-        expect(file).to have_received(:write).with(IO.read('./spec/fixtures/icons.svg'))
+        expect(file).to have_received(:write).with(File.read('./spec/fixtures/icons.svg'))
         expect(logger).to have_received(:info).exactly(:twice)
       end
     end
@@ -115,7 +115,7 @@ RSpec.describe Svgeez::Builder, '#build' do
       it 'writes a file' do
         builder.build
 
-        expect(file).to have_received(:write).with(%(#{IO.read('./spec/fixtures/icons-svgo.svg')}\n))
+        expect(file).to have_received(:write).with(%(#{File.read('./spec/fixtures/icons-svgo.svg')}\n))
         expect(logger).to have_received(:info).exactly(:twice)
       end
     end
