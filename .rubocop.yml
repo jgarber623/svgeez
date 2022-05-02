@@ -5,17 +5,6 @@ inherit_from:
 Layout/LineLength:
   Enabled: false
 
-# Checks if the length of a block exceeds some maximum value.
-Metrics/BlockLength:
-  Exclude:
-    - spec/**/*.rb
-
-# Checks for long examples.
-RSpec/ExampleLength:
-  CountAsOne:
-    - array
-    - hash
-
 # Checks if examples contain too many `expect` calls.
 RSpec/MultipleExpectations:
   Max: 2
