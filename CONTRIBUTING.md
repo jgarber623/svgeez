@@ -31,7 +31,7 @@ npm install -g svgo
 1. Create a feature branch for the code changes you're looking to make: `git checkout -b my-new-feature`.
 1. _Write some code!_
 1. Build (`bundle exec rake build`) and install (`bundle exec rake install`) your updated code.
-1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `bin/ci`.
+1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `bundle exec rspec`.
 1. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`. _(See [this excellent article](https://chris.beams.io/posts/git-commit/) for tips on writing useful Git commit messages.)_
 1. Push the branch to your fork: `git push -u origin my-new-feature`.
 1. Create a new [pull request][pulls] and we'll review your changes.
