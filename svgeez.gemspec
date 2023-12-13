@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = Dir['exe/**/*', 'lib/**/*'].reject { |f| File.directory?(f) }
-  spec.files        += %w[LICENSE CHANGELOG.md CODE_OF_CONDUCT.md CONTRIBUTING.md README.md]
+  spec.files        += %w[LICENSE CHANGELOG.md README.md]
   spec.files        += %w[svgeez.gemspec]
 
   spec.bindir        = 'exe'
