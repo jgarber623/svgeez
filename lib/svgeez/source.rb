@@ -2,12 +2,12 @@
 
 module Svgeez
   class Source
-    DEFAULT_INPUT_FOLDER_PATH = './_svgeez'
+    DEFAULT_INPUT_FOLDER_PATH = "./_svgeez"
 
     attr_reader :folder_path
 
     def initialize(options = {})
-      @folder_path = File.expand_path(options.fetch('source', DEFAULT_INPUT_FOLDER_PATH))
+      @folder_path = File.expand_path(options.fetch("source", DEFAULT_INPUT_FOLDER_PATH))
     end
 
     def file_paths
@@ -17,7 +17,7 @@ module Svgeez
     private
 
     def file_paths_pattern
-      @file_paths_pattern ||= File.join(folder_path, '*.svg')
+      @file_paths_pattern ||= File.join(folder_path, "*.svg")
     end
   end
 end

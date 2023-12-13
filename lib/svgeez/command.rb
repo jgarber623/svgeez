@@ -13,7 +13,7 @@ module Svgeez
       end
 
       def init_with_program(program)
-        program.command(name.split('::').last.downcase.to_sym) do |command|
+        program.command(name.split("::").last.downcase.to_sym) do |command|
           command.description command_description
           command.syntax command_syntax
 
@@ -31,10 +31,10 @@ module Svgeez
       end
 
       def add_options(command)
-        command.option 'source', '-s', '--source [FOLDER]', 'Source folder (defaults to ./_svgeez)'
-        command.option 'destination', '-d', '--destination [OUTPUT]', 'Destination file or folder (defaults to ./svgeez.svg)'
-        command.option 'prefix', '-p', '--prefix [PREFIX]', 'Custom Prefix for icon id (defaults to destination filename)'
-        command.option 'svgo', '--with-svgo', 'Optimize source SVGs with SVGO before sprite generation (non-destructive)'
+        command.option "source", "-s", "--source [FOLDER]", "Source folder (defaults to ./_svgeez)"
+        command.option "destination", "-d", "--destination [OUTPUT]", "Destination file or folder (defaults to ./svgeez.svg)"
+        command.option "prefix", "-p", "--prefix [PREFIX]", "Custom Prefix for icon id (defaults to destination filename)"
+        command.option "svgo", "--with-svgo", "Optimize source SVGs with SVGO before sprite generation (non-destructive)"
       end
     end
   end
