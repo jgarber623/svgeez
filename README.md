@@ -5,8 +5,6 @@
 [![Gem](https://img.shields.io/gem/v/svgeez.svg?logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/svgeez)
 [![Downloads](https://img.shields.io/gem/dt/svgeez.svg?logo=rubygems&style=for-the-badge)](https://rubygems.org/gems/svgeez)
 [![Build](https://img.shields.io/github/actions/workflow/status/jgarber623/svgeez/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/jgarber623/svgeez/actions/workflows/ci.yml)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/svgeez.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez)
-[![Coverage](https://img.shields.io/codeclimate/c/jgarber623/svgeez.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/svgeez/code)
 
 If you're using an [SVG](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) icon system in your Web projects, svgeez can help speed up your workflow by automating the SVG sprite generation process. Run svgeez alongside your existing project (or integrate it into your current build system); add, edit, or delete SVG files from a folder; and marvel as svgeez generates a single SVG sprite file ready for inclusion in your user interface.
 
