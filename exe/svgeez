@@ -1,16 +1,15 @@
 #!/usr/bin/env ruby
-
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), "..", "lib")
 
-require 'mercenary'
-require 'svgeez'
+require "mercenary"
+require "svgeez"
 
 Mercenary.program(:svgeez) do |program|
   program.version Svgeez::VERSION
-  program.description 'Generate an SVG sprite from a folder of SVG icons.'
-  program.syntax 'svgeez <subcommand> [options]'
+  program.description "Generate an SVG sprite from a folder of SVG icons."
+  program.syntax "svgeez <subcommand> [options]"
 
   Svgeez::Command.subclasses.each do |command|
     command.init_with_program(program)
