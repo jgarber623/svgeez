@@ -21,7 +21,6 @@ module Svgeez
       exit
     end
 
-    # rubocop:disable Metrics/AbcSize
     def build
       raise NO_SVGS_IN_SOURCE_MESSAGE if source_is_empty?
 
@@ -37,7 +36,6 @@ module Svgeez
     rescue RuntimeError => e
       logger.warn e.message
     end
-    # rubocop:enable Metrics/AbcSize
 
     private
 
