@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in svgeez.gemspec
 gemspec
 
-gem 'pry-byebug'
+gem 'debug'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
