@@ -7,7 +7,6 @@ gemspec
 
 gem 'pry-byebug'
 gem 'rake'
-gem 'reek'
 gem 'rspec'
 gem 'rubocop'
 gem 'rubocop-packaging'
