@@ -15,11 +15,11 @@ module Svgeez
         end
 
         def command_description
-          'Builds an SVG sprite from a folder of SVG icons'
+          "Builds an SVG sprite from a folder of SVG icons"
         end
 
         def command_syntax
-          'build [options]'
+          "build [options]"
         end
       end
     end

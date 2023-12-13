@@ -2,19 +2,19 @@
 
 module Svgeez
   class Destination
-    DEFAULT_DESTINATION_FILE_NAME = 'svgeez.svg'
+    DEFAULT_DESTINATION_FILE_NAME = "svgeez.svg"
 
     def initialize(options = {})
-      @destination = File.expand_path(options.fetch('destination', "./#{DEFAULT_DESTINATION_FILE_NAME}"))
+      @destination = File.expand_path(options.fetch("destination", "./#{DEFAULT_DESTINATION_FILE_NAME}"))
     end
 
     def file_id
-      @file_id ||= File.basename(file_name, '.svg').tr(' ', '-')
+      @file_id ||= File.basename(file_name, ".svg").tr(" ", "-")
     end
 
     def file_name
       @file_name ||=
-        if @destination.end_with?('.svg')
+        if @destination.end_with?(".svg")
           File.split(@destination)[1]
         else
           DEFAULT_DESTINATION_FILE_NAME
@@ -27,7 +27,7 @@ module Svgeez
 
     def folder_path
       @folder_path ||=
-        if @destination.end_with?('.svg')
+        if @destination.end_with?(".svg")
           File.split(@destination)[0]
         else
           @destination

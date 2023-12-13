@@ -3,16 +3,16 @@
 module Svgeez
   class Builder
     SOURCE_IS_DESTINATION_MESSAGE = "Setting `source` and `destination` to the same path isn't allowed!"
-    SOURCE_DOES_NOT_EXIST = 'Provided `source` folder does not exist.'
-    NO_SVGS_IN_SOURCE_MESSAGE = 'No SVGs were found in `source` folder.'
+    SOURCE_DOES_NOT_EXIST = "Provided `source` folder does not exist."
+    NO_SVGS_IN_SOURCE_MESSAGE = "No SVGs were found in `source` folder."
 
     attr_reader :source, :destination, :prefix
 
     def initialize(options = {})
       @source = Source.new(options)
       @destination = Destination.new(options)
-      @svgo = options.fetch('svgo', false)
-      @prefix = options.fetch('prefix', @destination.file_id)
+      @svgo = options.fetch("svgo", false)
+      @prefix = options.fetch("prefix", @destination.file_id)
 
       raise SOURCE_IS_DESTINATION_MESSAGE if source_is_destination?
       raise SOURCE_DOES_NOT_EXIST unless source_exists?
@@ -45,7 +45,7 @@ module Svgeez
       file_contents = Elements::SvgElement.new(source, destination, prefix).build
       file_contents = Optimizer.new.optimize(file_contents) if @svgo
 
-      file_contents.insert(4, ' style="display: none;"')
+      file_contents.insert(4, %( style="display: none;"))
     end
 
     def destination_file_path

@@ -13,7 +13,7 @@ module Svgeez
           Listen.to(folder_path, only: /\.svg\z/) { builder.build }.start
           sleep
         rescue Interrupt
-          Svgeez.logger.info 'Quitting svgeez...'
+          Svgeez.logger.info "Quitting svgeez..."
         end
 
         private
@@ -24,11 +24,11 @@ module Svgeez
         end
 
         def command_description
-          'Watches a folder of SVG icons for changes'
+          "Watches a folder of SVG icons for changes"
         end
 
         def command_syntax
-          'watch [options]'
+          "watch [options]"
         end
       end
     end

@@ -10,7 +10,7 @@ module Svgeez
 
       def build
         File.read(@file_path).match(%r{^<svg\s*?(?<attributes>.*?)>(?<content>.*?)</svg>}m) do |matches|
-          %(<symbol #{element_attributes(matches[:attributes]).sort.join(' ')}>#{element_contents(matches[:content])}</symbol>)
+          %(<symbol #{element_attributes(matches[:attributes]).sort.join(" ")}>#{element_contents(matches[:content])}</symbol>)
         end
       end
 
@@ -19,8 +19,8 @@ module Svgeez
       def element_attributes(attributes)
         attrs = attributes.scan(/(?:viewBox|xmlns:.+?)=".*?"/m)
         id_prefix = @file_id
-        id_suffix = File.basename(@file_path, '.svg').gsub(/['"\s]/, '-')
-        id_attribute = [id_prefix, id_suffix].reject(&:empty?).join('-')
+        id_suffix = File.basename(@file_path, ".svg").gsub(/['"\s]/, "-")
+        id_attribute = [id_prefix, id_suffix].reject(&:empty?).join("-")
 
         attrs << %(id="#{id_attribute}")
       end
