@@ -1,14 +1,6 @@
 inherit_from:
-  - https://raw.githubusercontent.com/jgarber623/rubocop-configs/main/.rubocop.gem.yml
+  - https://github.com/jgarber623/rubocop-configs/raw/main/.rubocop.yml
+  - https://github.com/jgarber623/rubocop-configs/raw/main/.rubocop-rspec.yml
 
-# Checks the length of lines in the source code.
-Layout/LineLength:
-  Enabled: false
-
-# Checks if examples contain too many `expect` calls.
-RSpec/MultipleExpectations:
-  Max: 2
-
-# Checks if example groups contain too many `let` and `subject` calls.
-RSpec/MultipleMemoizedHelpers:
-  Max: 6
+require:
+  - rubocop-packaging
