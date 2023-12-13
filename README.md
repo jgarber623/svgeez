@@ -18,25 +18,21 @@ _For more on why SVG sprites are the bee's knees as far as icon systems go, give
 
 ## Getting Started
 
-Before installing and using svgeez, you'll want to have Ruby 2.5 (or newer) installed on your computer. There are plenty of ways to go about this, but my preference is [rbenv](https://github.com/sstephenson/rbenv). svgeez is developed using Ruby 2.5.9 and is additionally tested against Ruby 2.6, 2.7, 3.0, and 3.1 using [GitHub Actions](https://github.com/jgarber623/svgeez/actions).
+Before installing and using svgeez, you'll want to have [Ruby](https://www.ruby-lang.org) 3.0 (or newer) installed. Using a Ruby version managment tool like [rbenv](https://github.com/rbenv/rbenv), [chruby](https://github.com/postmodern/chruby), or [rvm](https://github.com/rvm/rvm) is recommended.
+
+svgeez is developed using Ruby 3.0.6 and is tested against additional Ruby versions using [GitHub Actions](https://github.com/jgarber623/svgeez/actions).
 
 ## Installation
 
-If you're using [Bundler](http://bundler.io), add svgeez to your project's Gemfile:
+Add svgeez to your project's `Gemfile` and run `bundle install`:
 
-```rb
-source 'https://rubygems.org'
+```ruby
+source "https://rubygems.org"
 
-gem 'svgeez', '~> 4.1'
+gem "svgeez"
 ```
 
-…and hop over to your command prompt and run…
-
-```sh
-bundle install
-```
-
-You may also install svgeez directly by issuing the following command:
+You may also install svgeez directly for use as a standalone tool:
 
 ```sh
 gem install svgeez
