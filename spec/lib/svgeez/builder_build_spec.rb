@@ -70,10 +70,10 @@ RSpec.describe Svgeez::Builder, "#build" do
 
       allow(file).to receive(:write)
 
-      file_paths = %w[facebook github heart skull twitter].map { |i| "./spec/fixtures/icons/#{i}.svg" }
-
-      allow(source).to receive(:file_paths).and_return(file_paths)
-      allow(source).to receive(:folder_path).and_return(File.expand_path(source_folder_path))
+      allow(source).to receive_messages(
+        file_paths: %w[facebook github heart skull twitter].map { |i| "./spec/fixtures/icons/#{i}.svg" },
+        folder_path: File.expand_path(source_folder_path)
+      )
     end
 
     context "when @svgo is not specified" do
