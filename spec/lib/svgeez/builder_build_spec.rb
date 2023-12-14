@@ -19,14 +19,14 @@ RSpec.describe Svgeez::Builder, "#build" do
       allow(File).to receive(:directory?).and_return(false)
     end
 
-    it "logs an error" do
+    it "logs an error", :aggregate_failures do
       expect { described_class.new.build }.to raise_error(SystemExit)
       expect(logger).to have_received(:error).with("Provided `source` folder does not exist.")
     end
   end
 
   context "when @source and @destination are the same" do
-    it "logs an error" do
+    it "logs an error", :aggregate_failures do
       builder = described_class.new(
         "source" => "./foo",
         "destination" => "./foo"
@@ -37,7 +37,7 @@ RSpec.describe Svgeez::Builder, "#build" do
     end
   end
 
-  context "when @destination is nested within @source" do
+  context "when @destination is nested within @source", :aggregate_failures do
     it "logs an error" do
       builder = described_class.new(
         "source" => "./foo",
@@ -77,7 +77,7 @@ RSpec.describe Svgeez::Builder, "#build" do
     end
 
     context "when @svgo is not specified" do
-      it "writes a file" do
+      it "writes a file", :aggregate_failures do
         described_class.new(
           "source" => source_folder_path,
           "destination" => "./spec/fixtures/icons.svg"
@@ -89,7 +89,7 @@ RSpec.describe Svgeez::Builder, "#build" do
     end
 
     context "when @svgo is specified" do
-      it "writes a file" do
+      it "writes a file", :aggregate_failures do
         described_class.new(
           "source" => source_folder_path,
           "destination" => "./spec/fixtures/icons-svgo.svg",
