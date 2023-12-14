@@ -10,7 +10,7 @@ module Svgeez
 
       def build
         File.read(@file_path).match(%r{^<svg\s*?(?<attributes>.*?)>(?<content>.*?)</svg>}m) do |matches|
-          %(<symbol #{element_attributes(matches[:attributes]).sort.join(" ")}>#{element_contents(matches[:content])}</symbol>)
+          "<symbol #{element_attributes(matches[:attributes]).sort.join(' ')}>#{element_contents(matches[:content])}</symbol>"
         end
       end
 
