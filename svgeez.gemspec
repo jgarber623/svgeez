@@ -26,7 +26,8 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "bug_tracker_uri" => "#{spec.homepage}/issues",
     "changelog_uri" => "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md",
-    "rubygems_mfa_required" => "true"
+    "rubygems_mfa_required" => "true",
+    "source_code_uri" => "#{spec.homepage}/tree/v#{spec.version}"
   }
 
   spec.add_runtime_dependency "listen", "~> 3.5"
