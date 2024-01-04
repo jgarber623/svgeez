@@ -9,6 +9,8 @@ if RSpec.configuration.files_to_run.length > 1
 end
 
 SimpleCov.start do
+  add_filter "lib/core_ext"
+
   enable_coverage :branch
 
   formatter SimpleCov::Formatter::MultiFormatter.new(formatters)

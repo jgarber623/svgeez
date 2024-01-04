@@ -4,3 +4,6 @@ inherit_from:
 
 require:
   - rubocop-packaging
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
