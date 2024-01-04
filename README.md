@@ -131,6 +131,16 @@ In a Rails 4.2.x or 5 application:
 </body>
 ```
 
+In a Rails 7 application with Propshaft:
+
+```html
+<body>
+  <!-- Your page’s awesome content goes here! -->
+
+  <%= raw Rails.application.assets.load_path.find('icons.svg').content %>
+</body>
+```
+
 Or, with PHP:
 
 ```html
