@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+  publish-to-rubygems:
+    name: Publish to RubyGems
+    permissions:
+      contents: write
+      id-token: write
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: rubygems/release-gem@v1
+        with:
+          await-release: false
+  publish-to-github-packages:
+    name: Publish to GitHub Packages
+    permissions:
+      contents: read
+      packages: write
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:github: Bearer ${{ secrets.GITHUB_TOKEN }}\n" > $HOME/.gem/credentials
+      - run: bundle exec rake release
+        env:
+          BUNDLE_GEM__PUSH_KEY: github
+          RUBYGEMS_HOST: "https://rubygems.pkg.github.com/${{ github.repository_owner }}"
