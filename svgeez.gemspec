@@ -15,12 +15,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/jgarber623/svgeez"
   spec.license       = "MIT"
 
-  spec.files         = Dir["exe/**/*", "lib/**/*"].reject { |f| File.directory?(f) }
-  spec.files        += %w[LICENSE CHANGELOG.md README.md]
-  spec.files        += %w[svgeez.gemspec]
+  spec.files         = Dir["lib/**/*"].reject { |f| File.directory?(f) }
+  spec.files        += ["LICENSE", "CHANGELOG.md", "README.md"]
+  spec.files        += ["svgeez.gemspec"]
 
-  spec.bindir        = "exe"
-  spec.executables   = ["svgeez"]
   spec.require_paths = ["lib"]
 
   spec.metadata = {
@@ -29,7 +27,4 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true",
     "source_code_uri" => "#{spec.homepage}/tree/v#{spec.version}"
   }
-
-  spec.add_runtime_dependency "listen", "~> 3.5"
-  spec.add_runtime_dependency "mercenary", "~> 0.4.0"
 end
